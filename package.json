@@ -1,11 +1,17 @@
 {
-  "name": "samantha-portfolio",
+  "name": "portfolio-chadi",
   "version": "1.0.0",
   "description": "Portfolio personnel de développeur web",
   "main": "server.js",
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "build": "npm install",
+    "vercel-build": "echo Building..."
   },
   "dependencies": {
     "ejs": "^3.1.9",
@@ -16,5 +22,11 @@
   },
   "devDependencies": {
     "nodemon": "^3.0.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chadi25/portfolio-nodejs.git"
+  },
+  "author": "Chadi Abouhaik",
+  "license": "MIT"
 }
