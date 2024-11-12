@@ -26,7 +26,7 @@ app.get('/portfolio', (req, res) => {
     });
 });
 
-app.get('/certifications', (req, res) => {   // Nouvelle route
+app.get('/certifications', (req, res) => {   
     res.render('certifications', { 
         title: 'Certifications',
         page: 'certifications'
