@@ -3,7 +3,13 @@
   "builds": [
       {
           "src": "server.js",
-          "use": "@vercel/node"
+          "use": "@vercel/node",
+          "config": {
+              "includeFiles": [
+                  "views/**/*",
+                  "public/**/*"
+              ]
+          }
       }
   ],
   "routes": [
@@ -17,6 +23,13 @@
       }
   ],
   "env": {
-      "NODE_ENV": "production"
+      "NODE_ENV": "production",
+      "VIEW_PATH": "./views"
+  },
+  "functions": {
+      "server.js": {
+          "memory": 1024,
+          "maxDuration": 10
+      }
   }
 }
