@@ -1,0 +1,50 @@
+<div class="contact-container">
+    <div class="contact-header">
+        <div class="ascii-art">
+            {" " }
+        </div>
+        <span class="comment">// Travaillons ensemble !</span>
+    </div>
+
+    <div class="contact-content">
+        <form class="contact-form" action="/send-message" method="POST">
+            <div class="form-group">
+                <label class="variable" for="_name">_name</label>
+                <input type="text" id="_name" name="name" required placeholder="futur employeur" />
+            </div>
+
+            <div class="form-group">
+                <label class="variable" for="_email">_email</label>
+                <input type="email" id="_email" name="email" required placeholder="votremail@example.com" />
+            </div>
+
+            <div class="form-group">
+                <label class="variable" for="_message">_message</label>
+                <textarea id="_message" name="message" required placeholder="Entrez votre message ici ..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <span class="bracket">{</span>
+                send_message
+                <span class="bracket">}</span>
+            </button>
+        </form>
+
+        <div class="contact-info">
+            <div class="info-group">
+                <span class="label">{PHONE}</span>
+                <span class="value">06 28 08 82 29</span>
+            </div>
+
+            <div class="info-group">
+                <span class="label">{EMAIL}</span>
+                <span class="value">chadowa.k@gmail.com</span>
+            </div>
+
+            <div class="info-group">
+                <span class="label">{LOCATION}</span>
+                <span class="value">France, Nancy</span>
+            </div>
+        </div>
+    </div>
+</div>

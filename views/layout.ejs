@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Styles de base -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/portfolio.css">
+    <link rel="stylesheet" href="/css/contact.css">
+    <link rel="stylesheet" href="/css/resume.css">
+    <link rel="stylesheet" href="/css/certifications.css">
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("_SjRbyeKqpSq9h5h6");
+        })();
+    </script>
+</head>
+<body>
+    <div class="editor-layout">
+        <div class="line-numbers">
+            <% for(let i = 1; i <= 50; i++) { %>
+                <div class="line-number"><%= i %></div>
+            <% } %>
+        </div>
+        
+        <div class="content">
+            <nav class="nav-bar">
+                <div class="logo">
+                    <span class="comment">// chadi</span>
+                    <span class="variable">web_dev</span>
+                </div>
+                <div class="nav-links">
+                    <a href="/" class="<%= page === 'home' ? 'active' : '' %>">_home</a>
+                    <a href="/portfolio" class="<%= page === 'portfolio' ? 'active' : '' %>">_portfolio</a>
+                    <a href="/certifications" class="<%= page === 'certifications' ? 'active' : '' %>">_certifications</a>
+                    <a href="/resume" class="<%= page === 'resume' ? 'active' : '' %>">_resume</a>
+                    <a href="/contact" class="<%= page === 'contact' ? 'active' : '' %>">_contact</a>
+                </div>
+            </nav>
+            
+            <main class="main-content">
+                <%- body %>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/portfolio.js"></script>
+    <script src="/js/contact.js"></script>
+    <script src="/js/certifications.js"></script>  <!-- Nouveau script -->
+</body>
+</html>

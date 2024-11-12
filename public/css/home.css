@@ -1,0 +1,120 @@
+/* home.css */
+.terminal-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-color);
+}
+
+.terminal {
+    background-color: #1E1E1E;
+    padding: 2rem;
+    border-radius: 8px;
+    font-family: 'Fira Code', monospace;
+    color: #D4D4D4;
+}
+
+.cursor {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.hidden {
+    display: none;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* Style du contenu principal */
+#main-content {
+    padding: 2rem;
+}
+
+.main-section {
+    margin-bottom: 3rem;
+}
+
+.comment {
+    color: #6A9955;
+    margin-bottom: 1rem;
+}
+
+.highlight {
+    color: #569CD6;
+}
+
+.typing-container {
+    height: 1.5em;
+    margin: 1rem 0;
+}
+
+.typing-text {
+    color: #4FC1FF;
+}
+
+.tech-stack {
+    margin: 2rem 0;
+}
+
+.tech-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.tech {
+    background-color: rgba(86, 156, 214, 0.1);
+    color: #569CD6;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.quick-link {
+    background-color: rgba(30, 30, 30, 0.5);
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.quick-link:hover {
+    transform: translateY(-5px);
+    border-color: #569CD6;
+    background-color: rgba(86, 156, 214, 0.1);
+}
+
+.link-content h3 {
+    color: #4FC1FF;
+    margin-bottom: 0.5rem;
+}
+
+.link-content p {
+    color: #D4D4D4;
+}
+
+@media (max-width: 768px) {
+    #main-content {
+        padding: 1rem;
+    }
+    
+    .links-grid {
+        grid-template-columns: 1fr;
+    }
+}

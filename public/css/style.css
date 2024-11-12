@@ -1,0 +1,261 @@
+:root {
+  --bg-color: #1E1E1E;
+  --text-color: #D4D4D4;
+  --accent-blue: #569CD6;
+  --accent-yellow: #DCDCAA;
+  --line-number-color: #858585;
+  --nav-height: 60px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Fira Code', monospace;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+}
+
+/* Layout de base */
+.editor-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Numéros de ligne */
+.line-numbers {
+  padding: 1rem 0.5rem;
+  background-color: #1A1A1A;
+  border-right: 1px solid #333;
+  min-width: 3.5rem;
+  user-select: none;
+}
+
+.line-number {
+  color: var(--line-number-color);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  text-align: right;
+  padding-right: 0.5rem;
+}
+
+/* Zone de contenu principale */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navigation */
+.nav-bar {
+  height: var(--nav-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  border-bottom: 1px solid #333;
+  background-color: var(--bg-color);
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo .comment {
+  color: #6A9955;
+}
+
+.logo .variable {
+  color: var(--accent-blue);
+}
+
+.nav-links a {
+  color: var(--text-color);
+  text-decoration: none;
+  margin-left: 2rem;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  opacity: 1;
+  color: var(--accent-yellow);
+}
+
+/* Terminal */
+.terminal-intro {
+  position: fixed;
+  top: var(--nav-height);
+  left: 3.5rem;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.terminal-container {
+  background-color: #1A1A1A;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 600px;
+}
+
+.terminal-header {
+  background-color: #2D2D2D;
+  padding: 10px;
+  display: flex;
+  gap: 8px;
+  border-radius: 6px 6px 0 0;
+}
+
+.terminal-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal-button.red { background-color: #FF5F56; }
+.terminal-button.yellow { background-color: #FFBD2E; }
+.terminal-button.green { background-color: #27C93F; }
+
+.terminal-content {
+  padding: 20px;
+}
+
+.terminal-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.prompt {
+  color: #98C379;
+}
+
+.command {
+  color: var(--text-color);
+}
+
+.cursor {
+  width: 8px;
+  height: 15px;
+  background-color: var(--text-color);
+  animation: blink 1s infinite;
+  display: inline-block;
+  margin-left: 4px;
+}
+
+.welcome-text {
+  color: var(--accent-yellow);
+  margin-top: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Contenu principal */
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  position: relative;
+}
+
+.home-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - var(--nav-height) - 4rem);
+  text-align: center;
+}
+
+.ascii-art {
+  font-size: 2rem;
+  color: var(--accent-blue);
+  margin-bottom: 2rem;
+}
+
+.intro-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #6A9955;
+}
+
+.typing-text {
+  font-size: 2.5rem;
+  color: var(--accent-yellow);
+  margin-bottom: 1rem;
+  min-height: 3rem;
+}
+
+.comment {
+  color: #6A9955;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.scroll-indicator {
+  margin-top: 2rem;
+  animation: bounce 2s infinite;
+  color: var(--text-color);
+}
+
+.arrow {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+/* Animations */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+  }
+  40% {
+      transform: translateY(-20px);
+  }
+  60% {
+      transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; visibility: hidden; }
+}
+
+.fade-out {
+  animation: fadeOut 0.5s forwards;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-links {
+      display: none;
+  }
+
+  .intro-text h1 {
+      font-size: 2rem;
+  }
+
+  .typing-text {
+      font-size: 1.8rem;
+  }
+}
+

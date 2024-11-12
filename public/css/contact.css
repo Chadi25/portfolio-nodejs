@@ -1,0 +1,183 @@
+.contact-container {
+    padding: 2rem;
+    height: calc(100vh - var(--nav-height));
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.ascii-art {
+    font-size: 2rem;
+    color: var(--accent-blue);
+    margin-bottom: 1rem;
+}
+
+.contact-content {
+    display: flex;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Form Styles */
+.contact-form {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.variable {
+    color: var(--accent-blue);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+}
+
+input, textarea {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid #333;
+    padding: 0.8rem 1rem;
+    color: var(--text-color);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-yellow);
+    box-shadow: 0 0 0 2px rgba(220, 220, 170, 0.1);
+}
+
+.submit-btn {
+    background: transparent;
+    color: var(--accent-yellow);
+    border: 1px solid var(--accent-yellow);
+    padding: 0.8rem 1.5rem;
+    font-family: 'Fira Code', monospace;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    align-self: flex-start;
+}
+
+.submit-btn:hover {
+    background: rgba(220, 220, 170, 0.1);
+}
+
+.bracket {
+    opacity: 0.5;
+    margin: 0 0.5rem;
+}
+
+/* Contact Info Styles */
+.contact-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 2rem;
+}
+
+.info-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.label {
+    color: var(--accent-blue);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.value {
+    color: var(--accent-yellow);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-group, .info-group {
+    animation: fadeIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.2s; }
+.form-group:nth-child(3) { animation-delay: 0.3s; }
+.info-group:nth-child(1) { animation-delay: 0.4s; }
+.info-group:nth-child(2) { animation-delay: 0.5s; }
+.info-group:nth-child(3) { animation-delay: 0.6s; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .contact-info {
+        padding-top: 0;
+    }
+}
+
+/* Ajoutez ceci à votre contact.css */
+.success-message {
+    color: #6A9955; /* Couleur verte comme vos commentaires */
+    margin-top: 1rem;
+    font-family: 'Fira Code', monospace;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.error-message {
+    color: #F44747; /* Rouge pour les erreurs */
+    margin-top: 1rem;
+    font-family: 'Fira Code', monospace;
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.send-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
