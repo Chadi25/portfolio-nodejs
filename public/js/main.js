@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Détection mobile au chargement
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        document.body.classList.add('mobile-device');
+    }
+
     const terminalText = "Chadi.Abouhaik@portfolio:~$ ";
     const typingText = document.getElementById('typing-text');
     const terminalWelcome = document.querySelector('.terminal-welcome');
@@ -196,4 +201,5 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         initNavigation();
     }
+    
 });

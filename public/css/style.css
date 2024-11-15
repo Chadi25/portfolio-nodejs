@@ -387,4 +387,27 @@ body[data-page="certifications"] .main-content {
 body:not([data-page="certifications"]) {
   overflow: hidden;
 }
+/* Style par défaut - desktop */
+body {
+  overflow: hidden;
+}
 
+/* Pour la page certifications */
+body[data-page="certifications"] {
+  overflow-y: auto;
+}
+
+/* Pour assurer que le comportement mobile est appliqué immédiatement */
+.mobile-device {
+  touch-action: pan-y pinch-zoom;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Pour garantir la taille correcte sur mobile */
+@media screen and (max-width: 768px) {
+  .mobile-device {
+      font-size: 16px; /* Assure une taille de texte lisible */
+      width: 100vw;
+      min-height: 100vh;
+  }
+}
