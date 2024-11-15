@@ -21,7 +21,7 @@
         })();
     </script>
 </head>
-<body>
+<body data-page="<%= page %>">
     <div class="editor-layout">
         <div class="line-numbers">
             <% for(let i = 1; i <= 50; i++) { %>
@@ -31,10 +31,16 @@
         
         <div class="content">
             <nav class="nav-bar">
-                <div class="logo">
-                    <span class="comment">// chadi</span>
-                    <span class="variable">web_dev</span>
-                </div>
+         
+        <div class="logo">     
+            <div class="code-line">         
+                <span class="keyword">dev</span>         
+                <span class="text">.by(</span>         
+                <span class="name">Chadi</span>         
+                <span class="text">)</span>         
+                <span class="cursor">|</span>     
+            </div> 
+        </div>
                 <div class="nav-links">
                     <a href="/" class="<%= page === 'home' ? 'active' : '' %>">_home</a>
                     <a href="/portfolio" class="<%= page === 'portfolio' ? 'active' : '' %>">_portfolio</a>
@@ -56,5 +62,4 @@
     <script src="/js/portfolio.js"></script>
     <script src="/js/contact.js"></script>
     <script src="/js/certifications.js"></script>  <!-- Nouveau script -->
-</body>
-</html>
+</body></html>

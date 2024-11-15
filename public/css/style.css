@@ -64,16 +64,65 @@ body {
 
 .logo {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  font-family: 'Fira Code' , monospace;
 }
 
 .logo .comment {
   color: #6A9955;
 }
 
+
+.logo .comment, .logo .variable {
+  display: inline-block;
+  line-height: var(--nav-height);
+}
+
 .logo .variable {
   color: var(--accent-blue);
 }
+.logo .operator {
+  color: #D4D4D4; /* Couleur pour les accolades */
+}
+.logo .comment {
+  color: #6A9955;
+  font-style: italic;
+}
+.logo .string {
+  color: #CE9178; /* Couleur orange/rouge pour les strings */
+}
+.logo .keyword {
+  color: #c678dd; /* Couleur bleue pour les mots-clés */
+}
+.logo .code-line {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espace entre les éléments */
+}
+
+.logo .text {
+  color: #d19a66; /* Orange */
+}
+
+
+.logo .name {
+  color: #61afef; /* Bleu */
+  font-weight: bold;
+}
+
+logo .cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background-color: #61afef;
+  margin-left: 4px;
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
 
 .nav-links a {
   color: var(--text-color);
@@ -257,5 +306,85 @@ body {
   .typing-text {
       font-size: 1.8rem;
   }
+}
+
+/* Ajout dans style.css */
+body {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+body.page-transitioning {
+  opacity: 0;
+}
+
+/* Animation d'entrée de page */
+.main-content {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+body {
+  overflow: hidden;
+  transition: opacity 0.5s ease-in-out;
+}
+
+body.page-transitioning {
+  opacity: 0;
+}
+
+body {
+  overflow: hidden;
+  transition: opacity 0.5s ease-in-out;
+}
+
+body.page-transitioning {
+  opacity: 0;
+}
+
+.main-content {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Dans style.css */
+body {
+  transition: opacity 0.5s ease-in-out;
+  /* Supprimer overflow: hidden ici */
+}
+
+/* Ajouter des styles spécifiques pour la page des certifications */
+body[data-page="certifications"] {
+  overflow-y: auto; /* Permet le scroll vertical */
+  height: 100vh;
+}
+
+body[data-page="certifications"] .main-content {
+  min-height: 100%;
+  padding-bottom: 2rem; /* Espace en bas pour le scroll */
+}
+
+/* Pour les autres pages */
+body:not([data-page="certifications"]) {
+  overflow: hidden;
 }
 
