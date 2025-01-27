@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('mobile-device');
     }
 
-    const terminalText = "Chadi.Abouhaik@portfolio:~$ ";
+    const terminalText = "Chadi.Abouhnaik@portfolio:~$ ";
     const typingText = document.getElementById('typing-text');
     const terminalWelcome = document.querySelector('.terminal-welcome');
     const terminalIntro = document.getElementById('terminal-intro');

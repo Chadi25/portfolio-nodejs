@@ -5,6 +5,7 @@
   --accent-yellow: #DCDCAA;
   --line-number-color: #858585;
   --nav-height: 60px;
+  --vh: 1vh; /* Hauteur dynamique */
 }
 
 * {
@@ -18,6 +19,12 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   min-height: 100vh;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Script dynamique pour ajuster la hauteur */
+body {
+  height: calc(var(--vh) * 100);
 }
 
 /* Layout de base */
@@ -305,6 +312,10 @@ logo .cursor {
 
   .typing-text {
       font-size: 1.8rem;
+  }
+
+  body {
+    touch-action: pan-y;
   }
 }
 

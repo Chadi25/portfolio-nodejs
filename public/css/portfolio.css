@@ -162,3 +162,26 @@
     opacity: 1;
     transform: scale(1.1);
 }
+.contribution {
+    margin-top: 1rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+.contribution h4 {
+    margin-bottom: 0.5rem;
+    color: var(--accent-blue);
+    font-family: 'Fira Code', monospace;
+}
+
+.contribution ul {
+    padding-left: 1.5rem;
+    list-style: square;
+}
+
+.contribution li {
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
