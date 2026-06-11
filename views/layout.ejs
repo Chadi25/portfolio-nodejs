@@ -3,6 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1024">
+    <link rel="icon" type="image/x-icon" href="/images/goku.gif">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WNF2HHVC');</script>
+    <!-- End Google Tag Manager -->
 
     <title><%= title %></title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -23,6 +32,42 @@
     </script>
 </head>
 <body data-page="<%= page %>">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNF2HHVC"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <!-- Container du chatbot mobile sur toutes les pages (EN DEHORS DU LAYOUT) -->
+    <div class="chatbot-container">
+      <!-- Bulle flottante Goku -->
+      <div id="chatbot-bubble" class="chatbot-bubble">
+        <img src="/images/goku.gif" alt="Goku" />
+      </div>
+      
+      <!-- Widget de chat moderne -->
+      <div id="chatbot-widget" class="chatbot-widget">
+        <div class="chatbot-header">
+          <div class="title">
+            <img src="/images/goku.gif" alt="Goku" />
+            <span>🤖 Assistant IA</span>
+          </div>
+          <div class="controls">
+            <button id="chatbot-minimize" title="Réduire">−</button>
+            <button id="chatbot-close" title="Fermer">✖</button>
+          </div>
+        </div>
+        
+        <div id="chatbot-messages" class="chatbot-messages"></div>
+        
+        <form id="chatbot-form" class="chatbot-form">
+          <div class="chatbot-input-container">
+            <input type="text" id="chatbot-input" placeholder="Pose ta question..." autocomplete="off" />
+          </div>
+          <button type="submit">Envoyer</button>
+        </form>
+      </div>
+    </div>
+
     <div class="editor-layout">
         <div class="line-numbers">
             <% for(let i = 1; i <= 50; i++) { %>
@@ -59,8 +104,11 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="/js/knowledge-base.js"></script>
     <script src="/js/main.js"></script>
     <script src="/js/portfolio.js"></script>
     <script src="/js/contact.js"></script>
-    <script src="/js/certifications.js"></script>  <!-- Nouveau script -->
+    <script src="/js/certifications.js"></script>
+    <script src="/js/resume.js"></script>
+    <script src="/js/chatbot.js"></script>  <!-- Chatbot sur toutes les pages -->
 </body></html>

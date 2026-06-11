@@ -1,19 +1,160 @@
 <div class="portfolio-container">
     <div id="projects">
-        <!-- Projet 1 -->
+        <!-- Projet 1 - Stage JTEKT SFTP -->
         <div class="project active">
             <div class="project-content">
                 <div class="comment">// Projet 01</div>
-                <h2 class="title">
-                    SAÉ 3.04<br>Découvrir et mettre<br>
-                    en place un réseau<br>
-                    IoT
-                </h2>
+                <h2 class="title">Stage JTEKT<br>Infrastructure SFTP Sécurisée<br>& Automatisation de Migration</h2>
                 <p class="description">
-                    Deux joueurs jouent à Minecraft en réseau pour trouver un diamant caché, chaque joueur utilisant un gant connecté. Ce gant permet d'activer des superpouvoirs et des pièges via des boutons placés sur les doigts
+                    <strong>Contexte :</strong> Automatisation complète de la migration d'un ancien serveur FileZilla
+                    vers un environnement Debian 12 sécurisé. Développement d'un script d'analyse de fichiers XML en
+                    Python et de scripts de déploiement automatique en Bash.
                 </p>
-                
-                <!-- Ajout de la contribution -->
+
+                <div class="contribution">
+                    <h4>Détails techniques :</h4>
+                    <ul>
+                        <li><strong>Systèmes & Automatisation :</strong> Migration complète de FileZilla vers Debian 12
+                            sécurisé via scripts Python (XML) et Bash (déploiement).</li>
+                        <li><strong>Stockage & Sécurité :</strong> Volume dédié 1 To, isolation par chroots SFTP et
+                            gestion fine des privilèges via ACLs système (r/rw).</li>
+                        <li><strong>Persistance :</strong> Montages bind mounts automatisés via unités systemd (.mount)
+                            personnalisées.</li>
+                    </ul>
+                </div>
+
+                <div class="tech-stack">
+                    <span class="tech">Debian 12</span>
+                    <span class="tech">Python</span>
+                    <span class="tech">Bash</span>
+                    <span class="tech">SFTP</span>
+                    <span class="tech">systemd</span>
+                </div>
+                <a href="#" class="view-btn">View Project</a>
+            </div>
+            <div class="background" style="background-image: url('/images/jtekt_sftp.png')"></div>
+        </div>
+
+        <!-- Projet 2 - Stage JTEKT ChadiBot V4 -->
+        <div class="project">
+            <div class="project-content">
+                <div class="comment">// Projet 02</div>
+                <h2 class="title">Stage JTEKT<br>ChadiBot V4 – Recherche Hybride<br>& Filtrage Zero Trust</h2>
+                <p class="description">
+                    <strong>Contexte :</strong> Refonte d'un moteur de recherche documentaire pour supporter
+                    l'indexation de 2,25 To de données (1,1M de fichiers).
+                </p>
+
+                <div class="contribution">
+                    <h4>Détails techniques :</h4>
+                    <ul>
+                        <li><strong>Architecture & SSO :</strong> Reverse Proxy IIS avec authentification Kerberos/NTLM
+                            et automatisation via compte gMSA (Session 0).</li>
+                        <li><strong>Sécurité NTFS :</strong> Vérification des droits en temps réel via l'API C++ native
+                            (win32security) interrogeant la Master File Table (MFT).</li>
+                        <li><strong>Data Protection :</strong> Implémentation d'un bouclier Zero Trust interdisant le
+                            fallback d'accès sur les répertoires critiques (RH, Compta).</li>
+                        <li><strong>Intelligence & RAG :</strong> Pipeline de vectorisation asynchrone
+                            (FileSystemWatcher / Flask) et moteur de recherche dual (SQLite / FAISS).</li>
+                    </ul>
+                </div>
+
+                <div class="tech-stack">
+                    <span class="tech">PowerShell</span>
+                    <span class="tech">Active Directory</span>
+                    <span class="tech">win32security</span>
+                    <span class="tech">Flask & SQLite</span>
+                    <span class="tech">FAISS</span>
+                </div>
+                <a href="#" class="view-btn">View Project</a>
+            </div>
+            <div class="background" style="background-image: url('/images/chadibot.png')"></div>
+        </div>
+
+        <!-- Projet 3 - Stage JTEKT NAC -->
+        <div class="project">
+            <div class="project-content">
+                <div class="comment">// Projet 03</div>
+                <h2 class="title">Stage JTEKT<br>Contrôle d'Accès Réseau<br>NAC 802.1X EAP-TLS</h2>
+                <p class="description">
+                    <strong>Contexte :</strong> Sécurisation de la couche d'accès physique contre l'intrusion et le
+                    spoofing MAC.
+                </p>
+
+                <div class="contribution">
+                    <h4>Détails techniques :</h4>
+                    <ul>
+                        <li><strong>Architecture :</strong> Authentification forte par certificat machine (EAP-TLS) via
+                            infrastructure AD CS.</li>
+                        <li><strong>Commutation :</strong> Centralisation des stratégies sur serveur NPS (RADIUS) et
+                            durcissement de switchs Cisco 2960-X (C3PL / MAB).</li>
+                        <li><strong>Segmentation :</strong> Isolement dynamique des flux par VLANs dédiés (Production,
+                            Quarantaine, IoT).</li>
+                        <li><strong>Automatisation :</strong> Déploiement massif par GPO Active Directory pour forcer le
+                            service filaire (dot3svc) et l'auto-enrôlement.</li>
+                    </ul>
+                </div>
+
+                <div class="tech-stack">
+                    <span class="tech">802.1X EAP-TLS</span>
+                    <span class="tech">Cisco Switch</span>
+                    <span class="tech">NPS RADIUS</span>
+                    <span class="tech">Active Directory GPO</span>
+                    <span class="tech">PKI / AD CS</span>
+                </div>
+                <a href="#" class="view-btn">View Project</a>
+            </div>
+            <div class="background" style="background-image: url('/images/nac.jpg')"></div>
+        </div>
+
+        <!-- Projet 4 - Stage JTEKT Teleport -->
+        <div class="project">
+            <div class="project-content">
+                <div class="comment">// Projet 04</div>
+                <h2 class="title">Stage JTEKT<br>Bastion Teleport CE<br>& Intégration AD</h2>
+                <p class="description">
+                    <strong>Contexte :</strong> Centralisation des accès Windows/Linux via une architecture Zero Trust à
+                    certificats éphémères.
+                </p>
+
+                <div class="contribution">
+                    <h4>Détails techniques :</h4>
+                    <ul>
+                        <li><strong>Optimisation RDP :</strong> Configuration de GPO pour injecter les Smartcards et
+                            forcer l'encodage RemoteFX 32 bits (Build 26100+).</li>
+                        <li><strong>Infrastructure :</strong> Déploiement d'une autorité de certification d'entreprise
+                            (AD CS) et sécurisation des flux LDAPS (Port 636).</li>
+                        <li><strong>Identité de Service :</strong> Sécurisation du compte svc-teleport via dsacls
+                            (lecture ACL/CRL) et exclusion stricte des logons interactifs.</li>
+                        <li><strong>Intégration :</strong> Configuration et validation de la structure du service sous
+                            Linux via le fichier d'architecture teleport.yaml.</li>
+                    </ul>
+                </div>
+
+                <div class="tech-stack">
+                    <span class="tech">Teleport CE</span>
+                    <span class="tech">Active Directory</span>
+                    <span class="tech">AD CS / LDAPS</span>
+                    <span class="tech">GPO / RDP</span>
+                    <span class="tech">Zero Trust</span>
+                    <span class="tech">YAML / RBAC</span>
+                </div>
+                <a href="#" class="view-btn">View Project</a>
+            </div>
+            <div class="background" style="background-image: url('/images/teleport.jpg')"></div>
+        </div>
+
+        <!-- Projet 5 - SAÉ 3.04 Minecraft IoT -->
+        <div class="project">
+            <div class="project-content">
+                <div class="comment">// Projet 05</div>
+                <h2 class="title">SAÉ 3.04<br>Découvrir et mettre<br>en place un réseau IoT</h2>
+                <p class="description">
+                    Deux joueurs jouent à Minecraft en réseau pour trouver un diamant caché, chaque joueur utilisant un
+                    gant connecté. Ce gant permet d'activer des superpouvoirs et des pièges via des boutons placés sur
+                    les doigts.
+                </p>
+
                 <div class="contribution">
                     <h4>Ma contribution :</h4>
                     <ul>
@@ -28,21 +169,23 @@
                     <span class="tech">mqtt</span>
                     <span class="tech">raspberry pi</span>
                 </div>
-                <a href="https://github.com/Chadi25/SAE304_Decouvrir_et_mettre_en_place_un_r-seau_IoT" class="view-btn">View Project</a>
+                <a href="https://github.com/Chadi25/SAE304_Decouvrir_et_mettre_en_place_un_r-seau_IoT"
+                    class="view-btn">View Project</a>
             </div>
             <div class="background" style="background-image: url('/images/minecraft.webp')"></div>
         </div>
 
-        <!-- Projet 2 -->
+        <!-- Projet 6 - SAÉ 5.02 Hôpital -->
         <div class="project">
             <div class="project-content">
-                <div class="comment">// Projet 02</div>
+                <div class="comment">// Projet 06</div>
                 <h2 class="title">SAÉ 5.02<br>Piloter un projet<br>informatique</h2>
                 <p class="description">
-                    Le projet consiste à sécuriser au mieux le système informatique d'un hôpital. En effet, les hôpitaux sont souvent la cible d'attaque cyber consistant à rançonner l'établissement en lui bloquant son système informatique et en supprimant les données médicales et administratives
+                    Le projet consiste à sécuriser au mieux le système informatique d'un hôpital. En effet, les hôpitaux
+                    sont souvent la cible d'attaque cyber consistant à rançonner l'établissement en lui bloquant son
+                    système informatique et en supprimant les données médicales et administratives.
                 </p>
-                
-                <!-- Ajout de la contribution -->
+
                 <div class="contribution">
                     <h4>Ma contribution :</h4>
                     <ul>
@@ -57,21 +200,22 @@
                     <span class="tech">Cyber-sécurité</span>
                     <span class="tech">pilotage/gestion de projet</span>
                 </div>
-                <a href="https://github.com/Chadi25/-SA-5.02-Piloter-un-projet-informatique" class="view-btn">View Project</a>
+                <a href="https://github.com/Chadi25/-SA-5.02-Piloter-un-projet-informatique" class="view-btn">View
+                    Project</a>
             </div>
             <div class="background" style="background-image: url('/images/hopital.webp')"></div>
         </div>
 
-        <!-- Projet 3 -->
+        <!-- Projet 7 - SAÉ 4.IOM.01 Datacenter -->
         <div class="project">
             <div class="project-content">
-                <div class="comment">// Projet 03</div>
+                <div class="comment">// Projet 07</div>
                 <h2 class="title">SAÉ 4.IOM.01<br>Implémenter les réseaux</h2>
                 <p class="description">
-                    Dans un datacenter, les risques sont multiples, c'est pourquoi nous allons multiplier les mesures de sécurité et de redondance : électrique, thermique, réseau, incendie, etc.
+                    Dans un datacenter, les risques sont multiples, c'est pourquoi nous allons multiplier les mesures de
+                    sécurité et de redondance : électrique, thermique, réseau, incendie, etc.
                 </p>
-                
-                <!-- Ajout de la contribution -->
+
                 <div class="contribution">
                     <h4>Ma contribution :</h4>
                     <ul>
@@ -87,9 +231,41 @@
                     <span class="tech">Graffana</span>
                     <span class="tech">InfluxDB</span>
                 </div>
-                <a href="https://github.com/Chadi25/SA-4.IOM.01-Impl-menter-les-r-seaux-et-protocoles-sans-fil-d-di-s-l-IoT" class="view-btn">View Project</a>
+                <a href="https://github.com/Chadi25/SA-4.IOM.01-Impl-menter-les-r-seaux-et-protocoles-sans-fil-d-di-s-l-IoT"
+                    class="view-btn">View Project</a>
             </div>
             <div class="background" style="background-image: url('/images/data-center.jpg')"></div>
+        </div>
+
+        <!-- Projet 8 - Stage JTEKT Modernisation Infrastructure -->
+        <div class="project">
+            <div class="project-content">
+                <div class="comment">// Projet 08</div>
+                <h2 class="title">Stage JTEKT<br>Modernisation de<br>l'infrastructure réseau</h2>
+                <p class="description">
+                    Participation à la refonte des salles serveurs chez JTEKT Column Systems France. Découverte de la
+                    virtualisation VMware, de la haute disponibilité et des outils industriels de supervision réseau.
+                </p>
+
+                <div class="contribution">
+                    <h4>Ma contribution :</h4>
+                    <ul>
+                        <li>Refonte des salles serveurs (Bâtiments 21 & 35).</li>
+                        <li>Virtualisation VMware ESXi 8, baies SAN, sauvegarde Veeam.</li>
+                        <li>Supervision réseau, plan IP structuré.</li>
+                        <li>Préparation à l'IoT industriel et à la haute disponibilité.</li>
+                    </ul>
+                </div>
+
+                <div class="tech-stack">
+                    <span class="tech">VMware</span>
+                    <span class="tech">vCenter</span>
+                    <span class="tech">Veeam</span>
+                    <span class="tech">SAN</span>
+                </div>
+                <a href="#" class="view-btn">View Project</a>
+            </div>
+            <div class="background" style="background-image: url('/images/jtekt_infra.png')"></div>
         </div>
     </div>
 
@@ -101,8 +277,14 @@
 
     <!-- Previews -->
     <div class="previews">
-        <div class="preview active" onclick="showProject(0)" style="background-image: url('/images/minecraft.webp')"></div>
-        <div class="preview" onclick="showProject(1)" style="background-image: url('/images/hopital.webp')"></div>
-        <div class="preview" onclick="showProject(2)" style="background-image: url('/images/data-center.jpg')"></div>
+        <div class="preview active" onclick="showProject(0)" style="background-image: url('/images/jtekt_sftp.png')">
+        </div>
+        <div class="preview" onclick="showProject(1)" style="background-image: url('/images/logobot.png')"></div>
+        <div class="preview" onclick="showProject(2)" style="background-image: url('/images/nac.jpg')"></div>
+        <div class="preview" onclick="showProject(3)" style="background-image: url('/images/teleport.jpg')"></div>
+        <div class="preview" onclick="showProject(4)" style="background-image: url('/images/minecraft.webp')"></div>
+        <div class="preview" onclick="showProject(5)" style="background-image: url('/images/hopital.webp')"></div>
+        <div class="preview" onclick="showProject(6)" style="background-image: url('/images/data-center.jpg')"></div>
+        <div class="preview" onclick="showProject(7)" style="background-image: url('/images/jtekt_infra.png')"></div>
     </div>
 </div>

@@ -2,6 +2,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.querySelector('.contact-form');
     
+    // Vérifier si le formulaire existe avant d'ajouter l'event listener
+    if (!contactForm) {
+        console.log('Formulaire de contact non trouvé sur cette page');
+        return;
+    }
+    
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         

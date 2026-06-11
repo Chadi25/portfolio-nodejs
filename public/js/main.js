@@ -4,6 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('mobile-device');
     }
 
+    // S'assurer que la bulle Goku est visible
+    const bubble = document.getElementById('chatbot-bubble');
+    if (bubble) {
+        bubble.style.display = 'flex';
+        bubble.style.zIndex = '10000';
+    }
+
     const terminalText = "Chadi.Abouhnaik@portfolio:~$ ";
     const typingText = document.getElementById('typing-text');
     const terminalWelcome = document.querySelector('.terminal-welcome');
@@ -27,6 +34,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         mainContent.style.display = 'block';
                         initMainPageAnimations();
                         initNavigation();
+                        
+                        // S'assurer que la bulle Goku reste visible APRÈS l'animation
+                        const bubble = document.getElementById('chatbot-bubble');
+                        if (bubble) {
+                            bubble.style.display = 'flex';
+                            bubble.style.zIndex = '99999';
+                            bubble.style.visibility = 'visible';
+                            bubble.style.opacity = '1';
+                            console.log('Bulle Goku forcée visible après animation');
+                        }
                     }, 500);
                 }, 1500);
             }, 500);
@@ -35,7 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Animations de la page principale
     function initMainPageAnimations() {
-        const texts = ['Étudiant', 'en Réseaux et Télécoms', 'motivé', 'en recherche d\'une entreprise'];
+        const texts = [
+            'Apprenti Ingénieur Réseaux & Sécurité (Master ROC)',
+            'Spécialisé dans l\'industrialisation des infrastructures (IaC)',
+            'Spécialisé dans les architectures Zero Trust'
+        ];
         let textIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -131,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Touch events
+        // Touch events (première déclaration)
         let touchStartY = 0;
         let touchStartX = 0;
         const minSwipeDistance = 50;
@@ -171,7 +192,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Wheel events
         let wheelTimeout;
+        let accumulatedDelta = 0;
+        let lastDirection = null;
+
+        // Fonction pour vérifier si on scroll dans une zone spécifique
+        function isScrollingInScrollableElement(target) {
+            return target.closest('.chatbot-messages') || 
+                   target.closest('.chatbot-widget') ||
+                   target.closest('.chatbot-container') ||
+                   target.closest('.chatbot-form') ||
+                   document.body.classList.contains('chatbot-open');
+        }
+
         window.addEventListener('wheel', (e) => {
+            if (document.body.classList.contains('chatbot-open')) {
+                // Si la chatbox est ouverte, on bloque la navigation par scroll
+                return;
+            }
+            
+            // Vérifier si l'utilisateur scrolle dans un élément spécifique avec scroll natif
+            const target = e.target;
+            
+            if (isScrollingInScrollableElement(target)) {
+                // Si on scrolle dans un élément avec scroll natif, on laisse le scroll natif
+                console.log('Scroll dans un élément scrollable, navigation désactivée');
+                return;
+            }
+            
             if (isCertificationsPage) {
                 const element = document.scrollingElement || document.documentElement;
                 const isAtTop = element.scrollTop === 0;
@@ -182,17 +229,106 @@ document.addEventListener('DOMContentLoaded', () => {
                     navigateToPage(e.deltaY > 0 ? 'next' : 'prev');
                 }
             } else {
-                e.preventDefault();
+                // e.preventDefault(); // Scroll natif rétabli
                 if (isTransitioning) return;
 
-                clearTimeout(wheelTimeout);
-                wheelTimeout = setTimeout(() => {
-                    if (Math.abs(e.deltaY) > 30) {
-                        navigateToPage(e.deltaY > 0 ? 'next' : 'prev');
-                    }
-                }, 50);
+                // Accumulation du scroll pour trackpad
+                const dominantDelta = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+                const direction = dominantDelta > 0 ? 'next' : 'prev';
+
+                if (lastDirection && direction !== lastDirection) {
+                    accumulatedDelta = 0; // On change de sens, on reset
+                }
+                lastDirection = direction;
+
+                accumulatedDelta += dominantDelta;
+
+                console.log('Trackpad debug:', 'accumulatedDelta:', accumulatedDelta, 'direction:', direction);
+
+                if (Math.abs(accumulatedDelta) > 40) { // seuil à ajuster si besoin
+                    navigateToPage(direction);
+                    accumulatedDelta = 0;
+                }
             }
         }, { passive: false });
+
+        // Gestion des événements touch pour mobile (seconde déclaration - réutilise les variables existantes)
+        let touchStartTime = 0;
+        let isScrollingInChatbot = false;
+        let touchStartElement = null;
+
+        // Touch start
+        document.addEventListener('touchstart', (e) => {
+            const target = e.target;
+            touchStartElement = target;
+            isScrollingInChatbot = isScrollingInScrollableElement(target);
+            
+            // Vérifier aussi si on touche directement la bulle Goku
+            if (target.closest('#chatbot-bubble')) {
+                console.log('Touch sur bulle Goku détecté - navigation bloquée');
+                isScrollingInChatbot = true;
+                return;
+            }
+            
+            if (isScrollingInChatbot) {
+                console.log('Touch dans chatbot détecté - navigation bloquée');
+                return;
+            }
+
+            // Seulement si on n'est pas dans le chatbot
+            touchStartY = e.touches[0].clientY;
+            touchStartX = e.touches[0].clientX;
+            touchStartTime = Date.now();
+            console.log('Touch start pour navigation:', touchStartX, touchStartY);
+        }, { passive: true });
+
+        // Touch move
+        document.addEventListener('touchmove', (e) => {
+            // Toujours vérifier si on est maintenant dans le chatbot
+            const currentTarget = e.target;
+            const nowInChatbot = isScrollingInScrollableElement(currentTarget);
+            
+            if (nowInChatbot || isScrollingInChatbot) {
+                console.log('Touch move dans chatbot - scroll natif autorisé');
+                return;
+            }
+
+            if (document.body.classList.contains('chatbot-open')) {
+                console.log('Chatbot ouvert - navigation bloquée');
+                e.preventDefault();
+                return;
+            }
+
+            const touchCurrentY = e.touches[0].clientY;
+            const touchCurrentX = e.touches[0].clientX;
+            const deltaY = touchStartY - touchCurrentY;
+            const deltaX = touchStartX - touchCurrentX;
+            const touchDuration = Date.now() - touchStartTime;
+
+            // Vérifier si c'est un swipe vertical significatif
+            if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 50 && touchDuration < 500) {
+                console.log('Swipe détecté:', deltaY > 0 ? 'vers le bas' : 'vers le haut');
+                e.preventDefault();
+                
+                if (isCertificationsPage) {
+                    const element = document.scrollingElement || document.documentElement;
+                    const isAtTop = element.scrollTop === 0;
+                    const isAtBottom = Math.abs(element.scrollHeight - element.scrollTop - element.clientHeight) < 1;
+
+                    if ((isAtTop && deltaY < 0) || (isAtBottom && deltaY > 0)) {
+                        navigateToPage(deltaY > 0 ? 'next' : 'prev');
+                    }
+                } else {
+                    navigateToPage(deltaY > 0 ? 'next' : 'prev');
+                }
+            }
+        }, { passive: false });
+
+        // Touch end
+        document.addEventListener('touchend', () => {
+            isScrollingInChatbot = false;
+            touchStartElement = null;
+        }, { passive: true });
     }
 
     // Démarrer l'animation du terminal

@@ -1,9 +1,29 @@
 <div class="resume-container">
-    <object
-        data="/documents/CV_Chadi_Abouhaik.pdf"
-        type="application/pdf"
-        width="100%"
-        height="100%">
-        <p>Impossible d'afficher le PDF ? <a href="/documents/CV_Chadi_Abouhaik.pdf">Cliquez ici pour le télécharger</a></p>
-    </object>
+    <div class="resume-header">
+        <h2 class="stylish-title">// CV & LIVRET DE COMPÉTENCES</h2>
+        <div class="document-buttons">
+            <button class="view-btn" onclick="showDocument('CV_Chadi_Abouhaik.pdf', 'CV')">📄 Voir le CV</button>
+            <button class="view-btn" onclick="showDocument('livret_competences.pdf', 'Livret de Compétences')">📋 Voir le Livret</button>
+        </div>
+    </div>
+    
+    <div class="resume-content">
+        <object
+            id="pdfViewer"
+            data="/documents/CV_Chadi_Abouhaik.pdf"
+            type="application/pdf"
+            width="100%"
+            height="100%">
+            <p>Impossible d'afficher le PDF ? <a href="/documents/CV_Chadi_Abouhaik.pdf">Cliquez ici pour le télécharger</a></p>
+        </object>
+    </div>
+</div>
+
+<!-- Modal pour afficher les documents -->
+<div id="documentModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h3 id="modalTitle">Document</h3>
+        <iframe id="documentViewer" width="100%" height="100%"></iframe>
+    </div>
 </div>

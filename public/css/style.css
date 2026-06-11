@@ -15,11 +15,12 @@
 }
 
 body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 100vh;
   font-family: 'Fira Code', monospace;
   background-color: var(--bg-color);
   color: var(--text-color);
-  min-height: 100vh;
-  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 /* Script dynamique pour ajuster la hauteur */
@@ -30,6 +31,7 @@ body {
 /* Layout de base */
 .editor-layout {
   display: flex;
+  flex-direction: row;
   min-height: 100vh;
   width: 100%;
 }
@@ -157,6 +159,10 @@ logo .cursor {
   align-items: center;
   justify-content: center;
   z-index: 10;
+  /* Ne pas masquer la bulle Goku */
+  pointer-events: none;
+  /* Laisser un espace pour la bulle */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 120px), calc(100% - 120px) calc(100% - 120px), calc(100% - 120px) 100%, 0 100%);
 }
 
 .terminal-container {
@@ -226,15 +232,16 @@ logo .cursor {
   flex: 1;
   padding: 2rem;
   position: relative;
+  padding-bottom: 3rem;
 }
 
 .home-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  min-height: calc(100vh - var(--nav-height) - 4rem);
+  min-height: 0;
   text-align: center;
+  padding-bottom: 3rem;
 }
 
 .ascii-art {
@@ -257,9 +264,19 @@ logo .cursor {
 }
 
 .comment {
+  font-size: 2.1rem;
+  font-family: 'Fira Code', monospace;
   color: #6A9955;
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px rgba(90,255,120,0.08), 0 1px 0 #222;
+  background: linear-gradient(90deg, #23272e 60%, #2d3a2e 100%);
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #6A9955;
+  margin-bottom: 2.5rem;
+  display: inline-block;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.10);
+  text-transform: none;
 }
 
 .scroll-indicator {
@@ -344,38 +361,6 @@ body.page-transitioning {
       transform: translateY(0);
   }
 }
-body {
-  overflow: hidden;
-  transition: opacity 0.5s ease-in-out;
-}
-
-body.page-transitioning {
-  opacity: 0;
-}
-
-body {
-  overflow: hidden;
-  transition: opacity 0.5s ease-in-out;
-}
-
-body.page-transitioning {
-  opacity: 0;
-}
-
-.main-content {
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-      opacity: 0;
-      transform: translateY(20px);
-  }
-  to {
-      opacity: 1;
-      transform: translateY(0);
-  }
-}
 
 /* Dans style.css */
 body {
@@ -395,16 +380,15 @@ body[data-page="certifications"] .main-content {
 }
 
 /* Pour les autres pages */
-body:not([data-page="certifications"]) {
-  overflow: hidden;
-}
+
 /* Style par défaut - desktop */
 body {
   overflow: hidden;
 }
 
-/* Pour la page certifications */
-body[data-page="certifications"] {
+/* Pour la page certifications et portfolio */
+body[data-page="certifications"],
+body[data-page="portfolio"] {
   overflow-y: auto;
 }
 
@@ -421,4 +405,587 @@ body[data-page="certifications"] {
       width: 100vw;
       min-height: 100vh;
   }
+}
+
+/* ===== NOUVEAU CHATBOT MODERNE ===== */
+.chatbot-container {
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  z-index: 99999 !important;
+  font-family: 'Fira Code', monospace !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: block !important;
+}
+
+/* Bulle flottante Goku avec aura anime */
+.chatbot-bubble {
+  position: fixed !important;
+  bottom: 30px;
+  right: 30px;
+  width: 100px !important;
+  height: 100px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: grab !important;
+  box-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.4),
+    0 0 40px rgba(255, 255, 255, 0.2),
+    0 0 60px rgba(255, 255, 255, 0.1),
+    0 8px 32px rgba(0, 0, 0, 0.3) !important;
+  transition: all 0.3s ease !important;
+  animation: ultraInstinctAura 2s ease-in-out infinite !important;
+  backdrop-filter: blur(5px) !important;
+  overflow: visible !important;
+  z-index: 99999 !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  padding: 12px 8px 8px 8px !important;
+  /* Permettre le drag */
+  pointer-events: auto !important;
+  touch-action: manipulation !important;
+}
+
+.chatbot-bubble::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  animation: auraPulse 3s ease-in-out infinite;
+  z-index: -1;
+}
+
+.chatbot-bubble:hover {
+  transform: scale(1.1);
+  box-shadow: 
+    0 0 30px rgba(255, 255, 255, 0.6),
+    0 0 60px rgba(255, 255, 255, 0.3),
+    0 0 90px rgba(255, 255, 255, 0.1),
+    0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Animation de clic sur la bulle Goku */
+.chatbot-bubble:active {
+  cursor: grabbing !important;
+  transform: scale(1.2) !important;
+  transition: transform 0.1s ease !important;
+}
+
+.chatbot-bubble img {
+  width: 85px !important;
+  height: 85px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5)) !important;
+  z-index: 1 !important;
+  object-position: center 40% !important;
+  transform: translateY(5px) !important;
+}
+
+@keyframes ultraInstinctAura {
+  0%, 100% { 
+    transform: translateY(0px);
+    box-shadow: 
+      0 0 20px rgba(255, 255, 255, 0.4),
+      0 0 40px rgba(255, 255, 255, 0.2),
+      0 0 60px rgba(255, 255, 255, 0.1),
+      0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  50% { 
+    transform: translateY(-10px);
+    box-shadow: 
+      0 0 30px rgba(255, 255, 255, 0.6),
+      0 0 60px rgba(255, 255, 255, 0.3),
+      0 0 90px rgba(255, 255, 255, 0.1),
+      0 12px 40px rgba(0, 0, 0, 0.4);
+  }
+}
+
+@keyframes auraPulse {
+  0%, 100% { 
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+/* Widget de chat moderne */
+.chatbot-widget {
+  width: 400px;
+  height: 600px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.8) translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 99998;
+}
+
+.chatbot-widget.open {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.chatbot-widget.minimized {
+  height: 60px;
+  width: 300px;
+  overflow: hidden;
+  z-index: 99999;
+}
+
+.chatbot-widget.minimized .chatbot-messages,
+.chatbot-widget.minimized .chatbot-form {
+  display: none;
+}
+
+.chatbot-widget.minimized .chatbot-header {
+  height: 100%;
+  padding: 10px 20px;
+}
+
+.chatbot-widget.minimized .chatbot-header .title {
+  font-size: 14px;
+}
+
+.chatbot-widget.minimized .chatbot-header .title img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Header du chat */
+  .chatbot-header {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  border-bottom: 1px solid #333;
+}
+
+.chatbot-header .title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chatbot-header .title img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.chatbot-header .controls {
+  display: flex;
+  gap: 8px;
+}
+
+.chatbot-header button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+.chatbot-header button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+/* Zone des messages */
+.chatbot-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.chatbot-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chatbot-messages::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb {
+  background: rgba(102, 126, 234, 0.5);
+  border-radius: 3px;
+}
+
+/* Messages individuels */
+.chatbot-msg {
+  display: flex;
+  gap: 10px;
+  max-width: 85%;
+}
+
+.chatbot-msg.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.chatbot-msg.assistant {
+  align-self: flex-start;
+}
+
+.chatbot-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.chatbot-msg.assistant .chatbot-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.chatbot-msg.user .chatbot-avatar {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Contenu des messages */
+.chatbot-msg-content {
+  padding: 12px 16px;
+  border-radius: 18px;
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
+  position: relative;
+  text-decoration: none !important; /* Forcer l'absence de texte rayé */
+}
+
+/* Forcer l'absence de texte rayé sur tous les éléments du chatbot */
+.chatbot-msg-content *,
+.chatbot-msg-content p,
+.chatbot-msg-content span,
+.chatbot-msg-content div,
+.chatbot-msg-content strong,
+.chatbot-msg-content em,
+.chatbot-msg-content code {
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+  text-decoration-style: none !important;
+  text-decoration-color: transparent !important;
+}
+
+/* Règle globale pour tout le widget chatbot */
+.chatbot-widget,
+.chatbot-widget *,
+.chatbot-container,
+.chatbot-container * {
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+  text-decoration-style: none !important;
+  text-decoration-color: transparent !important;
+}
+
+.chatbot-msg.assistant .chatbot-msg-content {
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border-bottom-left-radius: 4px;
+}
+
+.chatbot-msg.user .chatbot-msg-content {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+/* Zone de saisie */
+.chatbot-form {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.chatbot-input-container {
+  flex: 1;
+  position: relative;
+}
+
+#chatbot-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #333;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#chatbot-input:focus {
+  border-color: #667eea;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+#chatbot-input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.chatbot-form button {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  border: 1px solid #333;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  min-width: 80px;
+}
+
+.chatbot-form button:hover {
+  background: linear-gradient(135deg, #2d2d2d 0%, #404040 100%);
+  border-color: #555;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.chatbot-form button:active {
+  transform: translateY(0);
+}
+
+/* État de chargement */
+.chatbot-msg.loading .chatbot-msg-content {
+  background: rgba(255, 255, 255, 0.7);
+  color: #666;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .chatbot-widget {
+    width: calc(100vw - 40px);
+    height: calc(100vh - 120px);
+    bottom: 10px;
+    right: 20px;
+    left: 20px;
+  }
+  
+  .chatbot-bubble {
+    width: 80px !important;
+    height: 80px !important;
+    bottom: 120px !important; /* Plus d'espace pour éviter le bouton */
+    right: 20px !important;
+  }
+  
+  .chatbot-bubble img {
+    width: 70px !important;
+    height: 70px !important;
+  }
+}
+
+/* Animation d'entrée */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Animation d'entrée simple */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.chatbot-widget.open {
+  animation: slideIn 0.3s ease forwards;
+}
+
+/* Pas d'effet de zoom sur le body - retour à l'état normal */
+
+/* S'assurer que la bulle Goku reste au-dessus de tout */
+.terminal-intro ~ .chatbot-container,
+.terminal-intro ~ .chatbot-bubble {
+  z-index: 999999 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: flex !important;
+  pointer-events: auto !important;
+}
+
+/* Chatbot widget normal */
+.chatbot-container,
+.chatbot-widget {
+  z-index: 99999 !important;
+}
+
+/* Forcer la visibilité de la bulle même pendant l'animation */
+body .chatbot-bubble {
+  z-index: 99999 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: flex !important;
+}
+
+/* Scroll natif pour les éléments du chatbot */
+.chatbot-messages {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+/* Désactiver la navigation par scroll quand on est dans ces éléments */
+.nav-links:hover,
+.chatbot-messages:hover,
+.chatbot-widget:hover {
+  /* Indicateur visuel que le scroll natif est actif */
+  cursor: default;
+}
+
+.main-content {
+  overflow-y: auto !important;
+  height: 100vh !important;
+  min-height: 0 !important;
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.home-content, .portfolio-content {
+  min-height: unset !important;
+  height: auto !important;
+  flex: none !important;
+  justify-content: flex-start !important;
+}
+
+.stylish-title {
+  font-size: 2.1rem;
+  font-family: 'Fira Code', monospace;
+  color: #6A9955;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px rgba(90,255,120,0.08), 0 1px 0 #222;
+  background: linear-gradient(90deg, #23272e 60%, #2d3a2e 100%);
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #6A9955;
+  margin-bottom: 2.5rem;
+  display: inline-block;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.10);
+  text-transform: none;
+}
+
+body[data-page="home"] .comment {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  font-size: 1.5rem !important;
+  color: #6A9955 !important;
+  display: inline;
+  margin-bottom: 2rem;
+  text-shadow: none !important;
+}
+
+/* Styles pour la page Resume */
+.resume-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.resume-header {
+  padding: 2rem;
+  text-align: center;
+  border-bottom: 1px solid #333;
+}
+
+.document-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.document-buttons .view-btn {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: #569CD6;
+  border: 1px solid #333;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.document-buttons .view-btn:hover {
+  background: linear-gradient(135deg, #2d2d2d 0%, #3a3a3a 100%);
+  border-color: #569CD6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(86, 156, 214, 0.2);
+}
+
+.resume-content {
+  flex: 1;
+  padding: 1rem;
+}
+
+.resume-content object {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
