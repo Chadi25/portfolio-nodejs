@@ -2,12 +2,13 @@
 window.KNOWLEDGE_BASE = {
   personal: {
     name: "Chadi Abouhnaik",
-    formation: "Master Réseaux, Objets Connectés et Intelligence Artificielle",
+    formation: "Master 2 Réseaux, Objets Connectés et Intelligence Artificielle",
+    current_status: "Élève-ingénieur en Master 2 (2026–2027) au CNAM, recherche d'alternance pour septembre 2026",
     previous_degree: "BUT Réseaux & Télécommunications",
     specialization: "Parcours IoM (Internet des Objets Mobilité)",
     university: "CNAM (2025–2027)",
     previous_university: "Université Marie et Louis Pasteur (2022–2025)",
-    objective: "Évolution vers des infrastructures IT critiques à grande échelle",
+    objective: "Évolution vers des infrastructures IT critiques à grande échelle, cybersécurité Zero Trust & GenAI industrielle",
     location: "France / Luxembourg (mobile)",
     languages: {
       french: "natif",

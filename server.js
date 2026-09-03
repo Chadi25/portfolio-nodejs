@@ -101,7 +101,7 @@ function buildLocalFallback(userMessageRaw = '') {
     userMessage.includes('mobile') ||
     userMessage.includes('luxembourg')
   ) {
-    fallbackResponse = "Chadi recherche activement une **alternance dès septembre 2025** dans le cadre de son Master (Réseaux, Objets Connectés et IA au CNAM). Il cible des opportunités en **ingénierie réseaux**, **administration systèmes / cloud**, **DevOps** ou **cybersécurité**. Il est mobile en France et au Luxembourg !";
+    fallbackResponse = "Chadi recherche activement une **alternance pour septembre 2026** dans le cadre de son **Master 2 (Réseaux, Objets Connectés et IA au CNAM)**. Il cible des opportunités en **ingénierie réseaux**, **cybersécurité Zero Trust**, **IA appliquée (RAG)** ou **systèmes / Cloud**. Il est mobile en France et au Luxembourg !";
   } else if (
     userMessage.includes('formation') ||
     userMessage.includes('étude') ||
@@ -231,7 +231,7 @@ function buildLocalFallback(userMessageRaw = '') {
     userMessage.includes('presente') ||
     userMessage.includes('bio')
   ) {
-    fallbackResponse = "Chadi Abouhnaik est un étudiant en **Master Réseaux, Objets Connectés et IA au CNAM** (2025–2027), après un BUT Réseaux & Télécoms. Fort de son expérience chez **JTEKT Column Systems** en **IA Générative industrielle (RAG)**, **Zero Trust (Teleport)** et **sécurité réseau (NAC 802.1X, Cisco)**, il recherche activement une **alternance pour septembre 2025** en France ou au Luxembourg !";
+    fallbackResponse = "Chadi Abouhnaik est en **Master 2 Réseaux, Objets Connectés et IA au CNAM** (2025–2027), après un BUT Réseaux & Télécoms. Fort de son expérience chez **JTEKT Column Systems** en **IA Générative industrielle (RAG)**, **Zero Trust (Teleport)** et **sécurité réseau (NAC 802.1X, Cisco)**, il recherche activement une **alternance pour septembre 2026** (Master 2) en France ou au Luxembourg !";
   } else if (
     userMessage.includes('compétence') ||
     userMessage.includes('competence') ||

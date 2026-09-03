@@ -417,6 +417,7 @@ body[data-page="portfolio"] {
   visibility: visible !important;
   opacity: 1 !important;
   display: block !important;
+  pointer-events: none !important; /* Permet aux clics et hovers de traverser vers la page */
 }
 
 /* Bulle flottante Goku avec aura anime */
@@ -538,6 +539,8 @@ body[data-page="portfolio"] {
   flex-direction: column;
   overflow: hidden;
   opacity: 0;
+  visibility: hidden !important;
+  pointer-events: none !important;
   transform: scale(0.8) translateY(20px);
   transition: all 0.3s ease;
   z-index: 99998;
@@ -545,6 +548,8 @@ body[data-page="portfolio"] {
 
 .chatbot-widget.open {
   opacity: 1;
+  visibility: visible !important;
+  pointer-events: auto !important;
   transform: scale(1) translateY(0);
 }
 
@@ -552,6 +557,8 @@ body[data-page="portfolio"] {
   height: 60px;
   width: 300px;
   overflow: hidden;
+  visibility: visible !important;
+  pointer-events: auto !important;
   z-index: 99999;
 }
 
@@ -868,10 +875,21 @@ body[data-page="portfolio"] {
   pointer-events: auto !important;
 }
 
-/* Chatbot widget normal */
-.chatbot-container,
-.chatbot-widget {
+/* Chatbot container et widget normal */
+.chatbot-container {
   z-index: 99999 !important;
+  pointer-events: none !important;
+}
+
+.chatbot-widget:not(.open) {
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+.chatbot-widget.open {
+  z-index: 99999 !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
 }
 
 /* Forcer la visibilité de la bulle même pendant l'animation */
