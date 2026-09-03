@@ -313,7 +313,10 @@ async function callGemini(systemPrompt, userMsg, apiKey, timeoutMs = 5500) {
           }
         ],
         generationConfig: {
-          maxOutputTokens: 600,
+          maxOutputTokens: 1500,
+          thinkingConfig: {
+            thinkingBudget: 0
+          },
           temperature: 0.7
         }
       };
@@ -372,7 +375,7 @@ async function callOpenRouter(messages, apiKey, timeoutMs = 5500) {
           'qwen/qwen-2.5-coder-32b-instruct:free'
         ],
         messages,
-        max_tokens: 500,
+        max_tokens: 1000,
         temperature: 0.7
       }),
       signal: controller.signal

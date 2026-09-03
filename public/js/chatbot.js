@@ -370,8 +370,6 @@ document.addEventListener('DOMContentLoaded', () => {
       .replace(/\[\/OUT\]/g, '')
       .replace(/\[INST\]/g, '')
       .replace(/\[\/INST\]/g, '')
-      .replace(/\[/g, '')
-      .replace(/\]/g, '')
       // Nettoyer les espaces multiples
       .replace(/\s+/g, ' ')
       .trim()
