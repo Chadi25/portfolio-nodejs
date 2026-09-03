@@ -313,11 +313,11 @@ async function callGemini(systemPrompt, userMsg, apiKey, timeoutMs = 5500) {
           }
         ],
         generationConfig: {
-          maxOutputTokens: 1500,
+          maxOutputTokens: 2500,
           thinkingConfig: {
-            thinkingBudget: 0
+            thinkingBudget: 512
           },
-          temperature: 0.7
+          temperature: 0.8
         }
       };
 
