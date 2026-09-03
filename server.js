@@ -23,14 +23,20 @@ const fetch = globalThis.fetch ? globalThis.fetch.bind(globalThis) : ((...args) 
 // Utiliser le port de Vercel ou 3000 en local
 const port = process.env.PORT || 3000;
 
-// Helper pour récupérer proprement les variables d'environnement (avec gestion BOM / espaces)
+// Helper pour récupérer proprement les variables d'environnement (insensible à la casse, sans espaces/BOM)
 function getEnv(key) {
   if (process.env[key]) return process.env[key].trim();
+  const lowerKey = key.toLowerCase();
+  for (const [k, v] of Object.entries(process.env)) {
+    if (k.toLowerCase() === lowerKey && v) {
+      return String(v).trim();
+    }
+  }
   if (dotenvResult && dotenvResult.parsed) {
     for (const [rawKey, value] of Object.entries(dotenvResult.parsed)) {
-      const normalizedKey = rawKey.replace(/\uFEFF/g, '').trim();
-      if (normalizedKey === key && value) {
-        return value.trim();
+      const normalizedKey = rawKey.replace(/\uFEFF/g, '').trim().toLowerCase();
+      if (normalizedKey === lowerKey && value) {
+        return String(value).trim();
       }
     }
   }
@@ -40,6 +46,15 @@ function getEnv(key) {
 const GEMINI_API_KEY = getEnv('GEMINI_API_KEY');
 const OPENROUTER_API_KEY = getEnv('OPENROUTER_API_KEY');
 const GROQ_API_KEY = getEnv('GROQ_API_KEY');
+
+// Endpoint de diagnostic sécurisé (ne divulgue aucune clé, uniquement vrai/faux)
+app.get('/api/health-ai', (req, res) => {
+  res.json({
+    geminiConfigured: !!getEnv('GEMINI_API_KEY'),
+    openrouterConfigured: !!getEnv('OPENROUTER_API_KEY'),
+    groqConfigured: !!getEnv('GROQ_API_KEY')
+  });
+});
 
 // Debug: Afficher les fournisseurs IA configurés
 console.log('🤖 Fournisseurs IA configurés :');
