@@ -1,25 +1,144 @@
 <div class="portfolio-container">
     <div id="projects">
-        <!-- Projet 1 - Stage JTEKT SFTP -->
+        <!-- Projet 1 - Stage JTEKT RAG Souverain & GenAI -->
         <div class="project active">
             <div class="project-content">
-                <div class="comment">// Projet 01</div>
-                <h2 class="title">Stage JTEKT<br>Infrastructure SFTP Sécurisée<br>& Automatisation de Migration</h2>
+                <div class="comment">// Projet 01 — GenAI & RAG Souverain</div>
+                <h2 class="title">Stage JTEKT<br>Moteur RAG Souverain<br>& IA Générative Industrielle</h2>
+                
+                <div class="project-metrics">
+                    <span class="metric-badge">📊 450+ Docs Vectorisés</span>
+                    <span class="metric-badge">⚡ -40% Temps de Recherche</span>
+                    <span class="metric-badge">🔒 100% Souverain On-Premise</span>
+                </div>
+
                 <p class="description">
-                    <strong>Contexte :</strong> Automatisation complète de la migration d'un ancien serveur FileZilla
-                    vers un environnement Debian 12 sécurisé. Développement d'un script d'analyse de fichiers XML en
-                    Python et de scripts de déploiement automatique en Bash.
+                    <strong>Problématique :</strong> Accéder instantanément à plus de 450 documentations techniques et rapports d'ingénierie complexes, avec une contrainte absolue de souveraineté et de confidentialité industrielle (zéro fuite de données, interdiction formelle d'utiliser des API Cloud publiques).
+                </p>
+
+                <div class="contribution">
+                    <h4>Solution technique & Impact opérationnel :</h4>
+                    <ul>
+                        <li><strong>LLM Locaux & Souveraineté :</strong> Déploiement on-premise de modèles open-source via <strong>Ollama</strong> (Llama 3, Mistral) pour un traitement local sans dépendance externe.</li>
+                        <li><strong>Indexation Vectorielle Dense :</strong> Vectorisation sémantique avec <strong>FAISS</strong> pour des recherches sémantiques instantanées sur les corpus techniques.</li>
+                        <li><strong>Pipeline Hybride & RRF :</strong> Combinaison de recherche lexicale et dense avec réordonnancement par <strong>Reciprocal Rank Fusion (RRF)</strong> pour une précision documentaire maximale.</li>
+                        <li><strong>Ingestion & APIs :</strong> Interface et scripts d'ingestion/nettoyage de données développés en <strong>Python</strong> via API REST connectée aux référentiels métier.</li>
+                    </ul>
+                </div>
+
+                <div class="tech-stack">
+                    <span class="tech">GenAI Industrielle</span>
+                    <span class="tech">RAG</span>
+                    <span class="tech">Ollama</span>
+                    <span class="tech">FAISS</span>
+                    <span class="tech">LangChain</span>
+                    <span class="tech">RRF</span>
+                    <span class="tech">Python REST API</span>
+                </div>
+                <a href="#" class="view-btn">View Project</a>
+            </div>
+            <div class="background" style="background-image: url('/images/chadibot.png')"></div>
+        </div>
+
+        <!-- Projet 2 - Stage JTEKT Bastion Zero Trust Teleport -->
+        <div class="project">
+            <div class="project-content">
+                <div class="comment">// Projet 02 — Cybersécurité & Zero Trust</div>
+                <h2 class="title">Stage JTEKT<br>Bastion Zero Trust Teleport<br>& Hardening Système</h2>
+
+                <div class="project-metrics">
+                    <span class="metric-badge">🛡️ 99,8% Disponibilité</span>
+                    <span class="metric-badge">📹 100% Auditabilité & Traçabilité</span>
+                    <span class="metric-badge">🐧 15 Serveurs Debian 12 Durcis</span>
+                </div>
+
+                <p class="description">
+                    <strong>Problématique :</strong> Remplacer les accès SSH directs et hétérogènes par un modèle d'accès unifié, auditable et conforme aux exigences de cybersécurité industrielle.
+                </p>
+
+                <div class="contribution">
+                    <h4>Solution technique & Impact opérationnel :</h4>
+                    <ul>
+                        <li><strong>Zero Trust Access Plane :</strong> Déploiement et configuration du bastion d'accès <strong>Teleport</strong> basé sur des certificats éphémères (mTLS/SSH).</li>
+                        <li><strong>Gouvernance & Audit :</strong> Suppression des clés SSH statiques partagées, contrôle d'accès granulaire basé sur les rôles (<strong>RBAC</strong>) et enregistrement vidéo continu des sessions d'administration.</li>
+                        <li><strong>Durcissement (Hardening) :</strong> Durcissement de <strong>15 serveurs Linux Debian 12</strong> en production (isolation de services via chroot, gestion fine des privilèges via ACLs POSIX et fermeture des vecteurs d'attaque).</li>
+                    </ul>
+                </div>
+
+                <div class="tech-stack">
+                    <span class="tech">Zero Trust</span>
+                    <span class="tech">Teleport CE</span>
+                    <span class="tech">Debian 12</span>
+                    <span class="tech">Hardening (chroot/ACLs)</span>
+                    <span class="tech">mTLS / SSH éphémère</span>
+                    <span class="tech">RBAC</span>
+                </div>
+                <a href="#" class="view-btn">View Project</a>
+            </div>
+            <div class="background" style="background-image: url('/images/teleport.jpg')"></div>
+        </div>
+
+        <!-- Projet 3 - Stage JTEKT NAC 802.1X & Automatisation -->
+        <div class="project">
+            <div class="project-content">
+                <div class="comment">// Projet 03 — Réseau & Sécurité d'Accès</div>
+                <h2 class="title">Stage JTEKT<br>Contrôle d'Accès Réseau<br>NAC 802.1X & Automatisation</h2>
+
+                <div class="project-metrics">
+                    <span class="metric-badge">🔌 24 Switchs Cisco 2960-X</span>
+                    <span class="metric-badge">⚙️ 12 Scripts d'Exploitation</span>
+                    <span class="metric-badge">🌐 Segmentation Dynamique</span>
+                </div>
+
+                <p class="description">
+                    <strong>Problématique :</strong> Sécurisation de la couche d'accès physique contre l'intrusion et le spoofing MAC, avec segmentation dynamique et automatisation des flux industriels.
+                </p>
+
+                <div class="contribution">
+                    <h4>Solution technique & Impact opérationnel :</h4>
+                    <ul>
+                        <li><strong>Déploiement NAC 802.1X :</strong> Authentification forte par certificat machine (EAP-TLS) et MAB centralisée sur serveur NPS (RADIUS) avec infrastructure AD CS.</li>
+                        <li><strong>Commutation Cisco :</strong> Segmentation dynamique des flux sur <strong>24 commutateurs Cisco 2960-X</strong> (cloisonnement strict entre flux bureautiques, industriels et IoT).</li>
+                        <li><strong>Automatisation d'Exploitation :</strong> Conception d'une suite de <strong>12 scripts Python et Bash</strong> pour automatiser les tâches d'exploitation d'infrastructure, l'interconnexion de services et les audits d'hygiène informatique.</li>
+                    </ul>
+                </div>
+
+                <div class="tech-stack">
+                    <span class="tech">NAC 802.1X</span>
+                    <span class="tech">Cisco 2960-X</span>
+                    <span class="tech">Segmentation VLANs</span>
+                    <span class="tech">NPS RADIUS</span>
+                    <span class="tech">Python</span>
+                    <span class="tech">Bash</span>
+                    <span class="tech">Automatisation</span>
+                </div>
+                <a href="#" class="view-btn">View Project</a>
+            </div>
+            <div class="background" style="background-image: url('/images/nac.jpg')"></div>
+        </div>
+
+        <!-- Projet 4 - Stage JTEKT SFTP -->
+        <div class="project">
+            <div class="project-content">
+                <div class="comment">// Projet 04 — Systèmes & Stockage Sécurisé</div>
+                <h2 class="title">Stage JTEKT<br>Infrastructure SFTP Sécurisée<br>& Automatisation de Migration</h2>
+
+                <div class="project-metrics">
+                    <span class="metric-badge">💾 Volume 1 To Dédié</span>
+                    <span class="metric-badge">🔒 Isolation Chroots SFTP</span>
+                    <span class="metric-badge">🚀 Migration 100% Automatisée</span>
+                </div>
+
+                <p class="description">
+                    <strong>Contexte :</strong> Automatisation complète de la migration d'un ancien serveur FileZilla vers un environnement Debian 12 sécurisé. Développement d'un script d'analyse de fichiers XML en Python et de scripts de déploiement automatique en Bash.
                 </p>
 
                 <div class="contribution">
                     <h4>Détails techniques :</h4>
                     <ul>
-                        <li><strong>Systèmes & Automatisation :</strong> Migration complète de FileZilla vers Debian 12
-                            sécurisé via scripts Python (XML) et Bash (déploiement).</li>
-                        <li><strong>Stockage & Sécurité :</strong> Volume dédié 1 To, isolation par chroots SFTP et
-                            gestion fine des privilèges via ACLs système (r/rw).</li>
-                        <li><strong>Persistance :</strong> Montages bind mounts automatisés via unités systemd (.mount)
-                            personnalisées.</li>
+                        <li><strong>Systèmes & Automatisation :</strong> Migration complète de FileZilla vers Debian 12 sécurisé via scripts Python (parsing XML) et Bash (déploiement).</li>
+                        <li><strong>Stockage & Sécurité :</strong> Volume dédié 1 To, isolation par chroots SFTP et gestion fine des privilèges via ACLs POSIX système.</li>
+                        <li><strong>Persistance :</strong> Montages bind mounts automatisés via unités systemd (.mount) personnalisées.</li>
                     </ul>
                 </div>
 
@@ -29,119 +148,11 @@
                     <span class="tech">Bash</span>
                     <span class="tech">SFTP</span>
                     <span class="tech">systemd</span>
+                    <span class="tech">ACLs POSIX</span>
                 </div>
                 <a href="#" class="view-btn">View Project</a>
             </div>
             <div class="background" style="background-image: url('/images/jtekt_sftp.png')"></div>
-        </div>
-
-        <!-- Projet 2 - Stage JTEKT ChadiBot V4 -->
-        <div class="project">
-            <div class="project-content">
-                <div class="comment">// Projet 02</div>
-                <h2 class="title">Stage JTEKT<br>ChadiBot V4 – Recherche Hybride<br>& Filtrage Zero Trust</h2>
-                <p class="description">
-                    <strong>Contexte :</strong> Refonte d'un moteur de recherche documentaire pour supporter
-                    l'indexation de 2,25 To de données (1,1M de fichiers).
-                </p>
-
-                <div class="contribution">
-                    <h4>Détails techniques :</h4>
-                    <ul>
-                        <li><strong>Architecture & SSO :</strong> Reverse Proxy IIS avec authentification Kerberos/NTLM
-                            et automatisation via compte gMSA (Session 0).</li>
-                        <li><strong>Sécurité NTFS :</strong> Vérification des droits en temps réel via l'API C++ native
-                            (win32security) interrogeant la Master File Table (MFT).</li>
-                        <li><strong>Data Protection :</strong> Implémentation d'un bouclier Zero Trust interdisant le
-                            fallback d'accès sur les répertoires critiques (RH, Compta).</li>
-                        <li><strong>Intelligence & RAG :</strong> Pipeline de vectorisation asynchrone
-                            (FileSystemWatcher / Flask) et moteur de recherche dual (SQLite / FAISS).</li>
-                    </ul>
-                </div>
-
-                <div class="tech-stack">
-                    <span class="tech">PowerShell</span>
-                    <span class="tech">Active Directory</span>
-                    <span class="tech">win32security</span>
-                    <span class="tech">Flask & SQLite</span>
-                    <span class="tech">FAISS</span>
-                </div>
-                <a href="#" class="view-btn">View Project</a>
-            </div>
-            <div class="background" style="background-image: url('/images/chadibot.png')"></div>
-        </div>
-
-        <!-- Projet 3 - Stage JTEKT NAC -->
-        <div class="project">
-            <div class="project-content">
-                <div class="comment">// Projet 03</div>
-                <h2 class="title">Stage JTEKT<br>Contrôle d'Accès Réseau<br>NAC 802.1X EAP-TLS</h2>
-                <p class="description">
-                    <strong>Contexte :</strong> Sécurisation de la couche d'accès physique contre l'intrusion et le
-                    spoofing MAC.
-                </p>
-
-                <div class="contribution">
-                    <h4>Détails techniques :</h4>
-                    <ul>
-                        <li><strong>Architecture :</strong> Authentification forte par certificat machine (EAP-TLS) via
-                            infrastructure AD CS.</li>
-                        <li><strong>Commutation :</strong> Centralisation des stratégies sur serveur NPS (RADIUS) et
-                            durcissement de switchs Cisco 2960-X (C3PL / MAB).</li>
-                        <li><strong>Segmentation :</strong> Isolement dynamique des flux par VLANs dédiés (Production,
-                            Quarantaine, IoT).</li>
-                        <li><strong>Automatisation :</strong> Déploiement massif par GPO Active Directory pour forcer le
-                            service filaire (dot3svc) et l'auto-enrôlement.</li>
-                    </ul>
-                </div>
-
-                <div class="tech-stack">
-                    <span class="tech">802.1X EAP-TLS</span>
-                    <span class="tech">Cisco Switch</span>
-                    <span class="tech">NPS RADIUS</span>
-                    <span class="tech">Active Directory GPO</span>
-                    <span class="tech">PKI / AD CS</span>
-                </div>
-                <a href="#" class="view-btn">View Project</a>
-            </div>
-            <div class="background" style="background-image: url('/images/nac.jpg')"></div>
-        </div>
-
-        <!-- Projet 4 - Stage JTEKT Teleport -->
-        <div class="project">
-            <div class="project-content">
-                <div class="comment">// Projet 04</div>
-                <h2 class="title">Stage JTEKT<br>Bastion Teleport CE<br>& Intégration AD</h2>
-                <p class="description">
-                    <strong>Contexte :</strong> Centralisation des accès Windows/Linux via une architecture Zero Trust à
-                    certificats éphémères.
-                </p>
-
-                <div class="contribution">
-                    <h4>Détails techniques :</h4>
-                    <ul>
-                        <li><strong>Optimisation RDP :</strong> Configuration de GPO pour injecter les Smartcards et
-                            forcer l'encodage RemoteFX 32 bits (Build 26100+).</li>
-                        <li><strong>Infrastructure :</strong> Déploiement d'une autorité de certification d'entreprise
-                            (AD CS) et sécurisation des flux LDAPS (Port 636).</li>
-                        <li><strong>Identité de Service :</strong> Sécurisation du compte svc-teleport via dsacls
-                            (lecture ACL/CRL) et exclusion stricte des logons interactifs.</li>
-                        <li><strong>Intégration :</strong> Configuration et validation de la structure du service sous
-                            Linux via le fichier d'architecture teleport.yaml.</li>
-                    </ul>
-                </div>
-
-                <div class="tech-stack">
-                    <span class="tech">Teleport CE</span>
-                    <span class="tech">Active Directory</span>
-                    <span class="tech">AD CS / LDAPS</span>
-                    <span class="tech">GPO / RDP</span>
-                    <span class="tech">Zero Trust</span>
-                    <span class="tech">YAML / RBAC</span>
-                </div>
-                <a href="#" class="view-btn">View Project</a>
-            </div>
-            <div class="background" style="background-image: url('/images/teleport.jpg')"></div>
         </div>
 
         <!-- Projet 5 - SAÉ 3.04 Minecraft IoT -->
@@ -277,11 +288,10 @@
 
     <!-- Previews -->
     <div class="previews">
-        <div class="preview active" onclick="showProject(0)" style="background-image: url('/images/jtekt_sftp.png')">
-        </div>
-        <div class="preview" onclick="showProject(1)" style="background-image: url('/images/logobot.png')"></div>
+        <div class="preview active" onclick="showProject(0)" style="background-image: url('/images/chadibot.png')"></div>
+        <div class="preview" onclick="showProject(1)" style="background-image: url('/images/teleport.jpg')"></div>
         <div class="preview" onclick="showProject(2)" style="background-image: url('/images/nac.jpg')"></div>
-        <div class="preview" onclick="showProject(3)" style="background-image: url('/images/teleport.jpg')"></div>
+        <div class="preview" onclick="showProject(3)" style="background-image: url('/images/jtekt_sftp.png')"></div>
         <div class="preview" onclick="showProject(4)" style="background-image: url('/images/minecraft.webp')"></div>
         <div class="preview" onclick="showProject(5)" style="background-image: url('/images/hopital.webp')"></div>
         <div class="preview" onclick="showProject(6)" style="background-image: url('/images/data-center.jpg')"></div>

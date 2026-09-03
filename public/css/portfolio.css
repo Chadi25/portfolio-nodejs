@@ -139,6 +139,29 @@
 }
 
 /* ==========================================
+   METRIQUES CHIFFRÉES (Impact opérationnel)
+   ========================================== */
+.project-metrics {
+    display: flex;
+    gap: 0.6rem;
+    margin: 0.8rem 0 1rem 0;
+    flex-wrap: wrap;
+}
+
+.metric-badge {
+    background: rgba(78, 201, 176, 0.12);
+    border: 1px solid rgba(78, 201, 176, 0.35);
+    color: #4EC9B0;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-family: 'Fira Code', monospace;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+/* ==========================================
    BOUTON VIEW PROJECT
    ========================================== */
 .view-btn {

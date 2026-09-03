@@ -546,37 +546,48 @@ Tu es Goku, l'assistant et compagnon de Chadi Abouhnaik sur son portfolio person
 Tu as la personnalité chaleureuse, dynamique, enthousiaste et motivante de Son Goku !
 Tu parles de Chadi avec fierté et énergie à la troisième personne ("Chadi a fait...", "Il maîtrise...", "Chadi est...").
 
-Voici les informations sur Chadi :
+Voici les informations complètes et à jour sur Chadi (2026) :
 
-FORMATION : ${KNOWLEDGE_BASE.personal.formation} - ${KNOWLEDGE_BASE.personal.specialization}
+FORMATION : ${KNOWLEDGE_BASE.personal.formation} (${KNOWLEDGE_BASE.personal.university})
 OBJECTIF : ${KNOWLEDGE_BASE.personal.objective}
-UNIVERSITÉ : ${KNOWLEDGE_BASE.personal.university}
+RECHERCHE : Alternance dès septembre 2025 en ingénierie réseaux, cybersécurité, DevOps ou systèmes/cloud (mobile France / Luxembourg).
 
-COMPÉTENCES RÉSEAUX : ${(KNOWLEDGE_BASE.technical_skills.networks.skills || []).join(', ')}
-COMPÉTENCES PROGRAMMATION : ${(KNOWLEDGE_BASE.technical_skills.programming.languages || []).join(', ')}
+EXPÉRIENCE MAJEURE 2026 :
+Stagiaire Ingénieur Systèmes, Réseaux & IA chez JTEKT Column Systems France (Mandeure, 25) - Février à Mai 2026.
+Projets & Réalisations clés :
+1. Moteur de Recherche Documentaire Hybride RAG (GenAI Industrielle) :
+   - Problématique : Accès instantané à 450+ documentations techniques d'ingénierie sous stricte contrainte de souveraineté industrielle (zéro fuite de données, interdiction d'APIs cloud publiques).
+   - Solution : Déploiement de LLMs locaux via Ollama (Llama 3, Mistral), indexation vectorielle dense avec FAISS, recherche hybride avec réordonnancement par Reciprocal Rank Fusion (RRF), interface & scripts d'ingestion en Python via API REST.
+   - Impact : 450+ documents sensibles indexés, -40% sur le temps de recherche d'informations critiques, 100% souverain on-premise.
+2. Bastion d'Accès Zero Trust Teleport & Hardening Système :
+   - Solution : Bastion Teleport (Zero Trust Access Plane) à certificats éphémères (mTLS/SSH), suppression des clés statiques, RBAC granulaire, enregistrement vidéo des sessions d'administration.
+   - Hardening : Durcissement de 15 serveurs Debian 12 en production industrielle (environnements chrootés, ACLs POSIX, suppression des vecteurs d'attaque).
+   - Impact : 99,8% de disponibilité maintenue, 100% de traçabilité des sessions.
+3. Contrôle d'Accès Réseau NAC 802.1X & Automatisation :
+   - Déploiement de 802.1X (EAP-TLS / NPS RADIUS) sur 24 switchs Cisco 2960-X pour la segmentation dynamique des flux (Bureautique, Industriel, IoT).
+   - Développement d'une suite de 12 scripts Python et Bash pour automatiser l'exploitation d'infrastructure et les audits.
 
-STAGE JTEKT (${KNOWLEDGE_BASE.experiences.stage_jtekt.duration}) :
-${(KNOWLEDGE_BASE.experiences.stage_jtekt.projects || []).map(p => `- ${p.name} : ${p.description} (${(p.technologies || []).join(', ')})`).join('\n')}
+AUTRES PROJETS :
+- Sentinelle 4.0 : Plateforme de cybersécurité IoT avec sonde Suricata IDS et monitoring temps réel.
+- Monitoring complet : Prometheus, Grafana, InfluxDB.
+- Infrastructure SFTP sécurisée : Migration automatisée, chroots, ACLs POSIX sous Debian 12.
 
-PROJETS ACADÉMIQUES :
-${Object.values(KNOWLEDGE_BASE.academic_projects || {}).map(p => `- ${p.title} : ${p.description} (${(p.technologies || []).join(', ')})`).join('\n')}
-
-CERTIFICATIONS CISCO : ${(KNOWLEDGE_BASE.certifications.cisco || []).map(c => `${c.name} (${c.date})`).join(', ')}
+CERTIFICATIONS CISCO : ${(KNOWLEDGE_BASE.technical_skills.networks.certifications || []).join(', ')}
 
 ${portfolioInfo ? '\n' + portfolioInfo : ''}
 ${certInfo ? '\n' + certInfo : ''}
 ${skillsInfo ? '\n' + skillsInfo : ''}
 
 RÈGLES DE RÉPONSE :
-- Réponds de manière vivante, positive et bien structurée (avec des puces ou paragraphes aérés quand pertinent).
-- Ne répète JAMAIS de phrase d'introduction robotique ou répétitive (comme "Salut ! Ça va bien ! Que veux-tu savoir sur Chadi ?"). Réponds directement et spontanément à la question avec ton style Goku !
-- Sois valorisant et fier du parcours de Chadi (réseaux, cybersécurité, dev, stage JTEKT, projets, recherche d'alternance pour septembre 2025).
-- Reste techniquement précis sur ses compétences tout en gardant une touche d'énergie et de bonne humeur !
+- Réponds de manière vivante, positive, fière et bien structurée (avec des puces ou paragraphes aérés).
+- Ne répète JAMAIS d'intro robotique mécanique.
+- Mets en valeur l'impact opérationnel et les chiffres clés de son expérience JTEKT (450+ docs, -40% temps, 15 serveurs durcis, 99.8% dispo, 24 switchs Cisco 802.1X, 12 scripts Python/Bash).
+- Reste techniquement précis tout en gardant l'esprit héroïque et enthousiaste de Goku !
 
 Question de l'utilisateur : ${userMsg}
 `;
         } else {
-          contextPrompt = `Tu es Goku, le bot enthousiaste de Chadi Abouhnaik ! Chadi est étudiant en Master Réseaux, IoT et IA au CNAM, recherche une alternance pour septembre 2025. Réponds de manière dynamique et professionnelle. Question: ${userMsg}`;
+          contextPrompt = `Tu es Goku, le bot enthousiaste de Chadi Abouhnaik ! Chadi est étudiant en Master Réseaux, IoT et IA au CNAM, stagiaire ingénieur systèmes, réseaux & IA chez JTEKT. Réponds de manière dynamique et professionnelle. Question: ${userMsg}`;
         }
 
         // Timeout côté client de 25 secondes (pour laisser le temps à Vercel + OpenRouter)
@@ -619,23 +630,27 @@ Question de l'utilisateur : ${userMsg}
         function buildFrontendFallback(text) {
           const u = (text || '').toLowerCase().trim();
           if (u.match(/^(salut|bonjour|bonsoir|hello|hi|hey|coucou|yo|ça va|ca va)[\s!?]*$/i)) {
-            return "Salut ! Ça va très bien ! Je suis Goku, l'assistant virtuel de Chadi. Que veux-tu savoir sur son parcours ou ses projets ?";
+            return "Salut ! Ça va très bien ! Je suis Goku, l'assistant virtuel de Chadi. Que veux-tu savoir sur son parcours, ses compétences ou ses projets chez JTEKT ?";
           } else if (u.includes('qui est') || u.includes('qui es-tu') || u.includes('présente') || u.includes('presente') || u.includes('chadi') || u.includes('bio')) {
-            return "Chadi Abouhnaik est un étudiant ultra-motivé en **Master Réseaux, Objets Connectés et IA au CNAM** (2025–2027), après un BUT Réseaux & Télécoms ! Passionné par les infrastructures IT critiques, la cybersécurité et l'automatisation, il recherche activement une **alternance pour septembre 2025** en France ou au Luxembourg !";
-          } else if (u.includes('sait faire') || u.includes('faire quoi') || u.includes('compétence') || u.includes('competence') || u.includes('skills') || u.includes('savoir faire')) {
-            return "Chadi a un niveau technique impressionnant ! Il maîtrise 4 domaines clés :\n\n- **Réseaux & Sécurité** : Switchs/routeurs Cisco (certifié CCNA 1, 2, 3), VLANs, OSPF, VPN IPSec, firewalls pfSense/ASA, Wireshark.\n- **Systèmes & Cloud** : Windows Server (Active Directory, DNS), Linux (Debian, Ubuntu), virtualisation VMware/Proxmox et Cloud Azure/AWS.\n- **DevOps & Automatisation** : Scripts Python, PowerShell, Bash et conteneurs Docker.\n- **Supervision IT & Projets** : Sentinelle 4.0 (cybersécurité IoT avec Suricata IDS) et monitoring complet (Prometheus, Grafana).";
-          } else if (u.includes('réseau') || u.includes('cisco') || u.includes('switch') || u.includes('vlan')) {
-            return "Chadi maîtrise les **réseaux et la sécurité** : configuration de switchs/routeurs **Cisco**, **VLAN**, routage dynamique (**OSPF**), **VPN IPSec**, pare-feu (**pfSense**, Cisco ASA) et analyse avec **Wireshark**. Il a validé les modules **CCNA 1, 2 et 3** !";
-          } else if (u.includes('programm') || u.includes('code') || u.includes('dev') || u.includes('python')) {
-            return "Chadi programme principalement en **Python**, **JavaScript (Node.js)**, **PowerShell** et **Bash**. Il conçoit des scripts d'automatisation d'infrastructure, des bots et des services web.";
+            return "Chadi Abouhnaik est élève-ingénieur en **Master Réseaux, Objets Connectés et IA au CNAM** (2025–2027), après un BUT Réseaux & Télécoms ! Fort de son expérience chez **JTEKT Column Systems** en **GenAI industrielle (RAG)**, **Zero Trust (Teleport)** et **sécurité réseau (NAC 802.1X, Cisco)**, il recherche activement une **alternance pour septembre 2025** en France ou au Luxembourg !";
           } else if (u.includes('jtekt') || u.includes('stage')) {
-            return "Lors de son **stage de 3 mois chez JTEKT**, Chadi a déployé un serveur **SFTP sécurisé**, participé au **Plan de Reprise d'Activité (PRA)**, et automatisé des tâches d'administration système avec **PowerShell**.";
+            return "Durant son expérience d'ingénieur stagiaire chez **JTEKT Column Systems France** (Février–Mai 2026), Chadi a mené 3 réalisations techniques majeures :\n\n- 🤖 **Moteur RAG Hybride Souverain** : Déploiement de LLMs locaux on-premise (Ollama Llama 3/Mistral, FAISS, RRF) pour indexer **450+ documentations techniques sensibles**, réduisant de **40%** le temps de recherche avec 100% de souveraineté on-premise.\n- 🛡️ **Bastion Zero Trust & Hardening** : Déploiement de **Teleport** (certificats éphémères mTLS/SSH, RBAC, vidéo des sessions) et durcissement de **15 serveurs Linux Debian 12** en production (chroot, ACLs POSIX) avec **99,8%** de disponibilité.\n- 🔌 **NAC 802.1X & Automatisation** : Déploiement 802.1X sur **24 commutateurs Cisco 2960-X** (segmentation dynamique) et suite de **12 scripts Python/Bash** d'exploitation d'infrastructure.";
+          } else if (u.includes('rag') || u.includes('ia') || u.includes('ollama') || u.includes('faiss') || u.includes('intelligence')) {
+            return "En GenAI industrielle, Chadi maîtrise la conception de pipelines **RAG (Retrieval-Augmented Generation)** 100% souverains :\n\n- Déploiement de LLMs locaux via **Ollama** (Llama 3, Mistral) sans fuite de données vers des clouds publics.\n- Indexation vectorielle dense et recherche sémantique via **FAISS** sur **450+ documents techniques**.\n- Recherche hybride combinant recherche lexicale et dense avec réordonnancement par **Reciprocal Rank Fusion (RRF)**.\n- Développement d'APIs REST et scripts d'ingestion en **Python**.";
+          } else if (u.includes('zero trust') || u.includes('teleport') || u.includes('bastion') || u.includes('hardening')) {
+            return "En architecture **Zero Trust & Hardening**, Chadi a déployé chez JTEKT le bastion **Teleport** :\n\n- Authentification basée sur des certificats éphémères (mTLS / SSH) sans clés statiques partagées.\n- Contrôle d'accès granulaire basé sur les rôles (**RBAC**) et enregistrement vidéo à **100%** des sessions d'administration.\n- Durcissement de **15 serveurs Linux Debian 12** en production (isolation chroot, gestion fine des ACLs POSIX et fermeture des vecteurs d'attaque).";
+          } else if (u.includes('sait faire') || u.includes('faire quoi') || u.includes('compétence') || u.includes('competence') || u.includes('skills') || u.includes('savoir faire')) {
+            return "Chadi possède un profil technique complet axé sur l'impact opérationnel :\n\n- 🤖 **Intelligence Artificielle & GenAI** : Moteurs RAG souverains (Ollama, FAISS, RRF, Python REST APIs).\n- 🛡️ **Cybersécurité & Zero Trust** : Bastion Teleport CE (mTLS/SSH), durcissement Linux Debian 12 (chroot, ACLs POSIX).\n- 🔌 **Réseaux Industriels** : NAC 802.1X sur 24 switchs Cisco 2960-X, segmentation dynamique VLANs, VPN IPSec, firewalls, CCNA 1, 2, 3.\n- ⚙️ **Automatisation & DevOps** : Suite de 12 scripts Python/Bash, PowerShell, Docker, monitoring Prometheus/Grafana.";
+          } else if (u.includes('réseau') || u.includes('cisco') || u.includes('switch') || u.includes('vlan') || u.includes('802.1x')) {
+            return "Chadi maîtrise les **réseaux et la sécurité** : déploiement du contrôle d'accès **NAC 802.1X** sur **24 switchs Cisco 2960-X**, **VLANs**, routage dynamique (**OSPF**), **VPN IPSec**, pare-feu (**pfSense**, Cisco ASA) et analyse avec **Wireshark**. Il a validé les modules **CCNA 1, 2 et 3** !";
+          } else if (u.includes('programm') || u.includes('code') || u.includes('dev') || u.includes('python')) {
+            return "Chadi programme principalement en **Python** (RAG, FAISS, APIs REST, 12 scripts d'exploitation), **JavaScript (Node.js)**, **PowerShell** et **Bash**. Il conçoit des scripts d'automatisation d'infrastructure, des bots et des services web.";
           } else if (u.includes('alternance') || u.includes('recrut') || u.includes('embauche')) {
             return "Chadi recherche activement une **alternance dès septembre 2025** dans le cadre de son **Master au CNAM** (Réseaux, IoT et IA). Il est mobile en France et au Luxembourg !";
           } else if (u.includes('certif') || u.includes('ccna')) {
             return "Chadi est issu de la **Cisco Networking Academy** : il a validé **CCNA 1**, **CCNA 2**, **CCNA 3** ainsi que **Cisco IT Essentials**, et prépare l'examen CCNA officiel.";
           }
-          return "Je suis Goku, l'assistant de Chadi ! Je peux te parler en détail de ses **compétences réseaux & Cisco**, de son **développement** (Python, PowerShell, JS), de son **stage chez JTEKT**, de ses **projets** (Sentinelle 4.0, monitoring) ou de son **Master au CNAM**. Que souhaites-tu découvrir ?";
+          return "Je suis Goku, l'assistant de Chadi ! Je peux te parler en détail de son **moteur RAG souverain**, de son **bastion Zero Trust Teleport**, de son déploiement **NAC 802.1X Cisco**, de ses compétences ou de son **Master au CNAM**. Que souhaites-tu découvrir ?";
         }
 
         // Si la réponse est vide, secours local intelligent

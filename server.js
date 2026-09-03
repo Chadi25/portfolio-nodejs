@@ -122,7 +122,26 @@ function buildLocalFallback(userMessageRaw = '') {
     (userMessage.includes('stage') && userMessage.includes('jtekt')) ||
     userMessage.includes('entreprise')
   ) {
-    fallbackResponse = "Lors de son **stage de 3 mois chez JTEKT**, Chadi a travaillé dans un environnement industriel exigeant : déploiement d'un **serveur SFTP sécurisé**, participation au **Plan de Reprise d'Activité (PRA)** avec tests de sauvegarde/restauration, **automatisation de tâches d'administration avec PowerShell**, et migration de serveurs Windows/Linux.";
+    fallbackResponse = "Durant son expérience d'ingénieur stagiaire chez **JTEKT Column Systems France** (Février–Mai 2026), Chadi a mené 3 réalisations techniques majeures :\n\n- 🤖 **Moteur RAG Hybride Souverain** : Déploiement de LLMs locaux on-premise (Ollama Llama 3/Mistral, FAISS, RRF) pour indexer **450+ documentations industrielles sensibles**, réduisant de **40%** le temps de recherche avec 100% de souveraineté.\n- 🛡️ **Bastion Zero Trust & Hardening** : Déploiement de **Teleport** (certificats éphémères mTLS/SSH, RBAC, vidéo des sessions) et durcissement de **15 serveurs Debian 12** en production (chroot, ACLs POSIX) avec **99,8%** de disponibilité.\n- 🔌 **NAC 802.1X & Automatisation** : Déploiement 802.1X sur **24 commutateurs Cisco 2960-X** (segmentation dynamique) et suite de **12 scripts Python/Bash** d'exploitation d'infrastructure.";
+  } else if (
+    userMessage.includes('rag') ||
+    userMessage.includes('ollama') ||
+    userMessage.includes('faiss') ||
+    userMessage.includes('intelligence artificielle') ||
+    userMessage.includes('genai') ||
+    userMessage.includes('llm') ||
+    userMessage.includes(' ia') ||
+    userMessage.includes('ia ')
+  ) {
+    fallbackResponse = "En Intelligence Artificielle et GenAI industrielle, Chadi maîtrise le pipeline **RAG (Retrieval-Augmented Generation)** souverain :\n\n- Déploiement local de LLMs via **Ollama** (Llama 3, Mistral) sans fuite de données (on-premise).\n- Indexation vectorielle dense et recherche sémantique via **FAISS**.\n- Pipeline hybride combinant recherche lexicale et dense avec réordonnancement par **Reciprocal Rank Fusion (RRF)**.\n- Conception de scripts d'ingestion et d'APIs REST en **Python**.";
+  } else if (
+    userMessage.includes('teleport') ||
+    userMessage.includes('zero trust') ||
+    userMessage.includes('bastion') ||
+    userMessage.includes('hardening') ||
+    userMessage.includes('durcissement')
+  ) {
+    fallbackResponse = "En architecture **Zero Trust & Hardening**, Chadi a déployé chez JTEKT le bastion **Teleport** :\n\n- Authentification basée sur des certificats éphémères (mTLS / SSH) sans clés statiques partagées.\n- Contrôle d'accès granulaire basé sur les rôles (**RBAC**) et auditabilité vidéo à **100%** des sessions.\n- Durcissement de **15 serveurs Linux Debian 12** en production (isolation chroot, gestion fine des ACLs POSIX et élimination des vecteurs d'attaque).";
   } else if (
     userMessage.includes('sentinelle') ||
     userMessage.includes('monitoring') ||
@@ -132,7 +151,7 @@ function buildLocalFallback(userMessageRaw = '') {
     userMessage.includes('suricata') ||
     userMessage.includes('grafana')
   ) {
-    fallbackResponse = "Chadi a réalisé plusieurs projets techniques marquants : **Sentinelle 4.0** (plateforme de cybersécurité IoT avec sonde Suricata IDS et alertes automatisées), une **infrastructure de monitoring réseau complète** (Prometheus, Grafana, InfluxDB), un **bot Discord interactif**, et ce **portfolio web full-stack**.";
+    fallbackResponse = "Chadi a réalisé plusieurs projets techniques marquants : son **Moteur RAG souverain et Bastion Zero Trust chez JTEKT**, **Sentinelle 4.0** (cybersécurité IoT avec sonde Suricata IDS), une **infrastructure de monitoring complète** (Prometheus, Grafana, InfluxDB), et ce **portfolio web full-stack**.";
   } else if (
     userMessage.includes('réseau') ||
     userMessage.includes('reseau') ||
@@ -146,9 +165,11 @@ function buildLocalFallback(userMessageRaw = '') {
     userMessage.includes('ipsec') ||
     userMessage.includes('firewall') ||
     userMessage.includes('pfsense') ||
-    userMessage.includes('wireshark')
+    userMessage.includes('wireshark') ||
+    userMessage.includes('802.1x') ||
+    userMessage.includes('nac')
   ) {
-    fallbackResponse = "Chadi possède de solides compétences en **réseaux et sécurité** : configuration de switchs et routeurs Cisco, segmentation par **VLANs** et routage inter-VLAN, règles de sécurité (**ACL**), routage dynamique (**OSPF**, notions BGP), tunnels **VPN IPSec**, pare-feu (Cisco ASA, pfSense) et analyse de paquets avec **Wireshark**.";
+    fallbackResponse = "Chadi possède une expertise pointue en **réseaux et sécurité** : déploiement du contrôle d'accès **NAC 802.1X** sur **24 switchs Cisco 2960-X**, segmentation dynamique par **VLANs** (Bureautique, Industriel, IoT), routage dynamique (**OSPF**), tunnels **VPN IPSec**, pare-feu (Cisco ASA, pfSense) et analyse de trames avec **Wireshark**.";
   } else if (
     userMessage.includes('certif') ||
     userMessage.includes('ccna')
@@ -165,7 +186,7 @@ function buildLocalFallback(userMessageRaw = '') {
     userMessage.includes('javascript') ||
     userMessage.includes('node')
   ) {
-    fallbackResponse = "En programmation et automatisation, Chadi développe en **Python**, **JavaScript (Node.js)**, **PowerShell** et **Bash**. Il a également des notions en **C**, **Java**, **PHP** et **SQL**, et utilise quotidiennement **Git**, **Docker** et **VS Code**.";
+    fallbackResponse = "En développement et automatisation, Chadi conçoit en **Python** (RAG, FAISS, APIs REST, 12 scripts d'exploitation), **Bash**, **PowerShell** et **JavaScript (Node.js)**. Il utilise quotidiennement **Docker**, **Git** et **Linux Debian 12**.";
   } else if (
     userMessage.includes('système') ||
     userMessage.includes('systeme') ||
@@ -176,7 +197,7 @@ function buildLocalFallback(userMessageRaw = '') {
     userMessage.includes('proxmox') ||
     userMessage.includes('virtualisation')
   ) {
-    fallbackResponse = "Côté systèmes, Chadi administre **Windows Server** (Active Directory, DNS, DHCP, GPO, IIS) et **Linux** (Debian, Ubuntu, CentOS). Il est à l'aise avec la virtualisation sous **VMware ESXi**, **Proxmox** et **Hyper-V**, ainsi qu'avec les conteneurs **Docker**.";
+    fallbackResponse = "Côté systèmes, Chadi a durci **15 serveurs Debian 12** en environnement de production industrielle, maîtrise **Windows Server** (Active Directory, DNS, DHCP, GPO, LDAPS, IIS) et la virtualisation sous **VMware ESXi**, **Proxmox** et les conteneurs **Docker**.";
   } else if (
     userMessage.includes('devops') ||
     userMessage.includes('ansible') ||
@@ -186,7 +207,7 @@ function buildLocalFallback(userMessageRaw = '') {
     userMessage.includes('aws') ||
     userMessage.includes('kubernetes')
   ) {
-    fallbackResponse = "En DevOps & Cloud, Chadi utilise **Ansible** pour automatiser les déploiements, **Terraform** pour l'Infrastructure as Code (IaC), **Docker** et **Kubernetes** pour la conteneurisation, ainsi que des plateformes Cloud comme **Azure** et **AWS**.";
+    fallbackResponse = "En DevOps & Cloud, Chadi utilise **Ansible** pour automatiser les configurations, **Terraform** pour l'IaC, **Docker** et **Kubernetes** pour la conteneurisation, ainsi que les plateformes **Azure** et **AWS**.";
   } else if (
     userMessage.includes('langue') ||
     userMessage.includes('anglais') ||
@@ -210,7 +231,7 @@ function buildLocalFallback(userMessageRaw = '') {
     userMessage.includes('presente') ||
     userMessage.includes('bio')
   ) {
-    fallbackResponse = "Chadi Abouhnaik est un étudiant ultra-motivé en **Master Réseaux, Objets Connectés et IA au CNAM** (2025–2027), après un BUT Réseaux & Télécoms ! Passionné par les infrastructures IT critiques, la sécurité et l'automatisation, il recherche activement une **alternance pour septembre 2025** en France ou au Luxembourg !";
+    fallbackResponse = "Chadi Abouhnaik est un étudiant en **Master Réseaux, Objets Connectés et IA au CNAM** (2025–2027), après un BUT Réseaux & Télécoms. Fort de son expérience chez **JTEKT Column Systems** en **IA Générative industrielle (RAG)**, **Zero Trust (Teleport)** et **sécurité réseau (NAC 802.1X, Cisco)**, il recherche activement une **alternance pour septembre 2025** en France ou au Luxembourg !";
   } else if (
     userMessage.includes('compétence') ||
     userMessage.includes('competence') ||
@@ -220,9 +241,9 @@ function buildLocalFallback(userMessageRaw = '') {
     userMessage.includes('faire quoi') ||
     userMessage.includes('que fait')
   ) {
-    fallbackResponse = "Chadi a un niveau technique impressionnant ! Il maîtrise 4 domaines clés :\n\n- **Réseaux & Sécurité** : Switchs/routeurs Cisco (certifié CCNA 1, 2, 3), VLANs, OSPF, VPN IPSec, firewalls pfSense/ASA, Wireshark.\n- **Systèmes & Cloud** : Windows Server (Active Directory, DNS), Linux (Debian, Ubuntu), virtualisation VMware/Proxmox et Cloud Azure/AWS.\n- **DevOps & Automatisation** : Scripts Python, PowerShell, Bash et conteneurs Docker.\n- **Supervision IT & Projets** : Sentinelle 4.0 (cybersécurité IoT avec Suricata IDS) et monitoring complet (Prometheus, Grafana).";
+    fallbackResponse = "Chadi possède un profil technique complet axé sur l'impact opérationnel :\n\n- 🤖 **Intelligence Artificielle & GenAI** : Moteurs RAG souverains (Ollama, FAISS, RRF, Python REST APIs).\n- 🛡️ **Cybersécurité & Zero Trust** : Bastion Teleport CE (mTLS/SSH), durcissement Linux Debian 12 (chroot, ACLs POSIX).\n- 🔌 **Réseaux Industriels** : NAC 802.1X sur 24 switchs Cisco 2960-X, segmentation dynamique VLANs, VPN IPSec, firewalls, CCNA 1, 2, 3.\n- ⚙️ **Automatisation & DevOps** : Suite de 12 scripts Python/Bash, PowerShell, Docker, monitoring Prometheus/Grafana.";
   } else {
-    fallbackResponse = "Je suis Goku, l'assistant de Chadi ! Je peux te parler en détail de ses **compétences réseaux & Cisco**, de son **développement** (Python, PowerShell, JS), de son **stage chez JTEKT**, de ses **projets** (Sentinelle 4.0, monitoring) ou de sa recherche d'**alternance**. Que souhaites-tu découvrir ?";
+    fallbackResponse = "Je suis Goku, l'assistant de Chadi ! Je peux te parler de son **moteur RAG souverain**, de son **bastion Zero Trust Teleport**, de son déploiement **NAC 802.1X Cisco chez JTEKT**, de ses **compétences réseaux & IA**, ou de sa recherche d'**alternance**. Que souhaites-tu découvrir ?";
   }
 
   return fallbackResponse;
@@ -305,12 +326,17 @@ function cleanBotResponse(text) {
 
 // Provider 1: Google Gemini (direct REST API, ultra-rapide < 2s, 1500 req/jour gratuites)
 async function callGemini(systemPrompt, userMsg, apiKey, timeoutMs = 6500) {
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
-
+  const startTime = Date.now();
   const models = ['gemini-2.5-flash-lite', 'gemini-2.5-flash'];
 
   for (const model of models) {
+    const elapsed = Date.now() - startTime;
+    const remaining = timeoutMs - elapsed;
+    if (remaining < 1500) break;
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), Math.min(remaining, 3500));
+
     try {
       const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
       const payload = {
@@ -338,6 +364,8 @@ async function callGemini(systemPrompt, userMsg, apiKey, timeoutMs = 6500) {
         signal: controller.signal
       });
 
+      clearTimeout(timeoutId);
+
       if (!response.ok) {
         const errText = await response.text();
         console.warn(`⚠️ Gemini API (${model}) erreur HTTP ${response.status}:`, errText);
@@ -347,19 +375,18 @@ async function callGemini(systemPrompt, userMsg, apiKey, timeoutMs = 6500) {
       const data = await response.json();
       const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
       if (text) {
-        clearTimeout(timeoutId);
         return text;
       }
     } catch (err) {
+      clearTimeout(timeoutId);
       if (err.name === 'AbortError') {
-        console.warn('⚠️ Gemini API timeout');
-        break;
+        console.warn(`⚠️ Gemini API (${model}) timeout`);
+      } else {
+        console.warn(`⚠️ Échec appel Gemini (${model}):`, err.message);
       }
-      console.warn(`⚠️ Échec appel Gemini (${model}):`, err.message);
     }
   }
 
-  clearTimeout(timeoutId);
   return null;
 }
 

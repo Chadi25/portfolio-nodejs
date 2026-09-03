@@ -17,23 +17,39 @@ window.KNOWLEDGE_BASE = {
   },
   
   technical_skills: {
-    systems: {
+    artificial_intelligence: {
       skills: [
-        "Windows Server (AD, DNS, DHCP, GPO, IIS)",
-        "Linux (Debian, Ubuntu, CentOS, shell scripting Bash)",
-        "Virtualization: VMware ESXi, Proxmox, Hyper-V",
-        "Cloud platforms: Azure (VMs, IAM, storage), AWS (EC2, S3, IAM)"
+        "RAG (Retrieval-Augmented Generation) industriel & souverain",
+        "Déploiement LLMs locaux on-premise via Ollama (Llama 3, Mistral)",
+        "Indexation vectorielle dense & recherche sémantique avec FAISS",
+        "Recherche hybride & réordonnancement par Reciprocal Rank Fusion (RRF)",
+        "LangChain, Embeddings vectoriels, pipelines d'ingestion de données",
+        "Développement d'APIs REST en Python pour IA générative"
+      ]
+    },
+
+    systems_security: {
+      skills: [
+        "Bastion Zero Trust Teleport CE (certificats éphémères mTLS/SSH, RBAC)",
+        "Hardening Linux Debian 12 en production (chroot, ACLs POSIX)",
+        "Contrôle d'accès réseau NAC 802.1X (EAP-TLS, NPS RADIUS, AD CS)",
+        "Windows Server (Active Directory, DNS, DHCP, GPO, IIS, LDAPS)",
+        "Linux avancé (Debian 12, Ubuntu, CentOS, Shell Bash)",
+        "Virtualisation & Haute Disponibilité : VMware ESXi, Proxmox, Hyper-V",
+        "Cloud platforms : Azure, AWS",
+        "Plan de Reprise d'Activité (PRA) et maintien en condition opérationnelle (MCO)"
       ]
     },
     
     networks: {
       skills: [
-        "VLAN configuration, inter-VLAN routing",
-        "Cisco switching & routing (ACL, OSPF, BGP basics)",
-        "VPN IPSec configuration",
-        "Firewall administration (Cisco ASA, pfSense)",
-        "Network monitoring & IDS (Suricata, Wireshark)",
-        "Protocoles TCP/IP, DHCP, DNS"
+        "Commutateurs Cisco 2960-X (24 switchs administrés et durcis)",
+        "Segmentation dynamique des flux par VLANs (Bureautique, Industriel, IoT)",
+        "Authentification 802.1X (C3PL / MAB / EAP-TLS)",
+        "Cisco switching & routing (ACLs, OSPF, notions BGP)",
+        "Tunnels VPN IPSec & Pare-feu (Cisco ASA, pfSense)",
+        "Surveillance & analyse de trames (Suricata IDS, Wireshark)",
+        "Protocoles industriels et d'infrastructure TCP/IP, DHCP, DNS"
       ],
       certifications: [
         "Cisco CCNA 1 – Routing & Switching",
@@ -43,104 +59,91 @@ window.KNOWLEDGE_BASE = {
       ]
     },
     
-    databases: {
-      skills: [
-        "SQL Server (en apprentissage, motivé pour progresser)",
-        "MySQL / MariaDB (expérience pratique)",
-        "Oracle (première expérience pratique)",
-        "MongoDB (projets académiques, bases NoSQL)",
-        "Access (utilisé en laboratoires académiques)"
-      ]
-    },
-    
     devops_automation: {
       skills: [
-        "Ansible (playbooks pour déploiement de VMs)",
-        "Terraform (infrastructure as code, utilisation en lab)",
-        "Docker (conteneurs pour apps & monitoring)",
+        "Suite de 12 scripts Python & Bash pour l'exploitation d'infrastructure",
+        "Docker & conteneurisation d'applications / monitoring",
         "Kubernetes (pods, services, deployments)",
-        "GitLab CI/CD (pipelines de base)",
-        "PowerShell scripting (tâches comptes & serveurs)",
-        "Python scripting (automatisation, APIs, traitement de données)"
+        "Ansible (playbooks de déploiement) & Terraform (IaC)",
+        "PowerShell scripting (administration serveurs et Active Directory)",
+        "Python scripting (APIs REST, RAG, automatisation, parsing XML)",
+        "Git & GitLab CI/CD"
       ]
     },
     
     monitoring_itms: {
       skills: [
         "Grafana & Prometheus (tableaux de bord & alertes)",
-        "InfluxDB (stockage de données time-series)",
+        "InfluxDB (stockage time-series)",
         "Nagios & Zabbix (supervision réseau)",
-        "GLPI ITSM (gestion d'incidents, services, Formcreator)"
-      ]
-    },
-    
-    security: {
-      skills: [
-        "Plan de Reprise d'Activité (PRA) – backup/restore",
-        "Incident response & vulnerability remediation",
-        "Secure SFTP server deployment",
-        "Access & identity management",
-        "IoT security project (Sentinelle 4.0 with Suricata IDS)"
+        "GLPI ITSM (gestion de parc et incidents)"
       ]
     },
     
     programming: {
       languages: [
-        "Python (scripts d'automatisation, REST APIs)",
-        "Java (projets académiques orientés objet)",
-        "Node.js (petites apps & bots)",
-        "C (programmation bas niveau de base)",
-        "PHP basics (formulaires web & accès DB)",
-        "JavaScript, HTML/CSS",
-        "PowerShell, Bash"
+        "Python (GenAI, RAG, APIs REST, automatisation)",
+        "Bash / Shell (scripts d'exploitation système Linux)",
+        "PowerShell (administration Windows & AD)",
+        "JavaScript (Node.js, Express, frontend)",
+        "Java, C, SQL",
+        "HTML5 / CSS3"
       ],
       tools: [
         "Git & GitLab",
-        "Visual Studio Code, IntelliJ",
-        "Postman (test d'APIs)",
-        "Office 365 suite"
+        "Ollama, FAISS, LangChain",
+        "Teleport CE",
+        "Visual Studio Code",
+        "Postman",
+        "Docker"
       ]
-    },
-    
-    softwares: [
-      "Cisco Packet Tracer",
-      "Wireshark",
-      "VMware",
-      "VirtualBox",
-      "Microsoft Office"
-    ]
+    }
   },
   
   experiences: {
     stage_jtekt: {
       company: "JTEKT Column Systems France",
-      duration: "Stage 2025",
-      role: "Stagiaire en informatique",
+      location: "Mandeure (25)",
+      period: "Février 2026 – Mai 2026",
+      role: "Stagiaire Ingénieur Systèmes, Réseaux & IA",
+      summary: "Sécurisation et maintien en condition opérationnelle (MCO) de l'infrastructure industrielle, déploiement d'un accès Zero Trust et conception d'un moteur de recherche documentaire IA (RAG) souverain.",
+      metrics: {
+        indexed_docs: "450+ documents industriels sensibles indexés",
+        search_reduction: "40% de réduction du temps de recherche documentaire",
+        sovereignty: "100% souverain on-premise (zéro fuite de données, sans cloud externe)",
+        availability: "99,8% de disponibilité de l'infrastructure maintenue",
+        auditability: "100% traçabilité et auditabilité des sessions d'administration",
+        cisco_switches: "24 switchs Cisco 2960-X configurés en NAC 802.1X",
+        scripts: "12 scripts Python et Bash développés pour l'exploitation"
+      },
       projects: [
         {
-          name: "Déploiement serveur SFTP sécurisé",
-          description: "Déploiement d'un serveur SFTP sécurisé sur Debian",
-          technologies: ["Debian", "SFTP", "Sécurité"]
+          name: "Projet A — Moteur de Recherche Documentaire Hybride RAG (GenAI Industrielle)",
+          problem: "Accéder instantanément à plus de 450 documentations techniques et rapports d'ingénierie complexes, avec contrainte absolue de souveraineté et confidentialité industrielle (interdiction d'API Cloud publiques).",
+          solution: "Déploiement de LLM locaux on-premise via Ollama (Llama 3, Mistral), indexation vectorielle dense avec FAISS, pipeline hybride lexical/dense avec réordonnancement par Reciprocal Rank Fusion (RRF), et API REST en Python.",
+          results: "450+ documents indexés, réduction de 40% du temps de recherche pour les ingénieurs, 100% souverain on-premise sans fuite de données.",
+          technologies: ["RAG", "GenAI", "Ollama", "FAISS", "LangChain", "RRF", "Python REST API"]
         },
         {
-          name: "Plan de Reprise d'Activité (PRA)",
-          description: "Contribution au Plan de Reprise d'Activité",
-          technologies: ["PRA", "Backup", "Restore"]
+          name: "Projet B — Bastion d'Accès Zero Trust & Durcissement Système",
+          problem: "Remplacer les accès SSH directs et hétérogènes par un modèle d'accès unifié, auditable et conforme aux exigences de cybersécurité industrielle.",
+          solution: "Déploiement du bastion d'accès Teleport (Zero Trust Access Plane) basé sur des certificats éphémères (mTLS/SSH), suppression des clés statiques, RBAC granulaire, enregistrement vidéo des sessions, et hardening de 15 serveurs Debian 12 en production (chroot, ACLs POSIX).",
+          results: "99,8% de disponibilité maintenue, 100% d'auditabilité des sessions d'administration.",
+          technologies: ["Zero Trust", "Teleport CE", "Debian 12", "Hardening", "mTLS", "RBAC", "ACLs POSIX"]
         },
         {
-          name: "Automatisation des tâches",
-          description: "Automatisation des tâches d'administration avec Bash & Python → réduction du temps de configuration de 30%",
-          technologies: ["Bash", "Python", "Automatisation"]
+          name: "Projet C — Contrôle d'Accès Réseau NAC 802.1X & Automatisation",
+          problem: "Sécurisation de la couche d'accès physique contre les intrusions et le spoofing MAC, avec segmentation dynamique des flux.",
+          solution: "Déploiement de 802.1X (EAP-TLS / MAB) sur 24 switchs Cisco 2960-X avec serveur NPS RADIUS et AD CS pour le cloisonnement strict bureautique/industriel/IoT. Développement de 12 scripts Python et Bash d'automatisation d'exploitation.",
+          results: "24 switchs Cisco 2960-X sécurisés, 12 scripts d'exploitation et d'hygiène IT opérationnels.",
+          technologies: ["NAC 802.1X", "Cisco 2960-X", "VLANs", "NPS RADIUS", "Python", "Bash", "AD CS"]
         },
         {
-          name: "Administration VMware et Cisco",
-          description: "Administration VMware ESXi et Cisco ASA",
-          technologies: ["VMware ESXi", "Cisco ASA"]
-        },
-        {
-          name: "Amélioration documentation",
-          description: "Amélioration de la documentation et des procédures pour l'équipe IT",
-          technologies: ["Documentation", "Procédures"]
+          name: "Projet D — Infrastructure SFTP Sécurisée & Automatisation de Migration",
+          problem: "Migration d'un ancien serveur FileZilla obsolète vers un environnement sécurisé et haute disponibilité.",
+          solution: "Déploiement sur Debian 12 sécurisé, volume 1 To, chroots SFTP, ACLs POSIX, persistance systemd mount, parsing XML automatisé en Python et déploiement Bash.",
+          results: "Migration 100% automatisée sans interruption de service.",
+          technologies: ["Debian 12", "Python", "Bash", "SFTP", "systemd", "ACLs POSIX"]
         }
       ]
     },
