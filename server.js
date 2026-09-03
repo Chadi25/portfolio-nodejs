@@ -203,16 +203,19 @@ function buildLocalFallback(userMessageRaw = '') {
     userMessage.includes('presente') ||
     userMessage.includes('bio')
   ) {
-    fallbackResponse = "Chadi Abouhnaik est étudiant en Master Réseaux, Objets Connectés et IA au CNAM. Passionné d'infrastructures réseaux, d'automatisation et de cybersécurité, il recherche une alternance pour relever de grands défis techniques !";
+    fallbackResponse = "Chadi Abouhnaik est un étudiant ultra-motivé en **Master Réseaux, Objets Connectés et IA au CNAM** (2025–2027), après un BUT Réseaux & Télécoms ! Passionné par les infrastructures IT critiques, la sécurité et l'automatisation, il recherche activement une **alternance pour septembre 2025** en France ou au Luxembourg !";
   } else if (
     userMessage.includes('compétence') ||
     userMessage.includes('competence') ||
     userMessage.includes('skills') ||
-    userMessage.includes('savoir faire')
+    userMessage.includes('savoir faire') ||
+    userMessage.includes('sait faire') ||
+    userMessage.includes('faire quoi') ||
+    userMessage.includes('que fait')
   ) {
-    fallbackResponse = "Les compétences clés de Chadi reposent sur 4 piliers : **Réseaux & Sécurité** (Cisco, VLAN, OSPF, VPN, firewalls), **Systèmes & Virtualisation** (Windows Server, Linux, VMware), **Automatisation & Dev** (Python, PowerShell, Bash, Docker) et **Supervision IT** (Grafana, Prometheus).";
+    fallbackResponse = "Chadi a un niveau technique impressionnant ! Il maîtrise 4 domaines clés :\n\n- **Réseaux & Sécurité** : Switchs/routeurs Cisco (certifié CCNA 1, 2, 3), VLANs, OSPF, VPN IPSec, firewalls pfSense/ASA, Wireshark.\n- **Systèmes & Cloud** : Windows Server (Active Directory, DNS), Linux (Debian, Ubuntu), virtualisation VMware/Proxmox et Cloud Azure/AWS.\n- **DevOps & Automatisation** : Scripts Python, PowerShell, Bash et conteneurs Docker.\n- **Supervision IT & Projets** : Sentinelle 4.0 (cybersécurité IoT avec Suricata IDS) et monitoring complet (Prometheus, Grafana).";
   } else {
-    fallbackResponse = "Je suis Goku, l'assistant de Chadi ! Je peux te renseigner sur ses **compétences réseaux**, son **développement** (Python, PowerShell, JS), son **stage chez JTEKT**, ses **projets académiques** (Sentinelle 4.0, monitoring), ses **certifications Cisco** ou sa recherche d'**alternance**. Que veux-tu savoir ?";
+    fallbackResponse = "Je suis Goku, l'assistant de Chadi ! Je peux te parler en détail de ses **compétences réseaux & Cisco**, de son **développement** (Python, PowerShell, JS), de son **stage chez JTEKT**, de ses **projets** (Sentinelle 4.0, monitoring) ou de sa recherche d'**alternance**. Que souhaites-tu découvrir ?";
   }
 
   return fallbackResponse;
@@ -464,7 +467,7 @@ app.post('/api/chatbot', rateLimit, async (req, res) => {
     const geminiKey = getEnv('GEMINI_API_KEY');
     if (!botResponse && geminiKey) {
       console.log('🚀 Tentative d\'appel Google Gemini API...');
-      botResponse = await callGemini(systemPrompt, lastUserMessage, geminiKey, 5500);
+      botResponse = await callGemini(systemPrompt, lastUserMessage, geminiKey, 5000);
       if (botResponse) {
         source = 'gemini';
         console.log('✅ Réponse générée via Google Gemini');
@@ -475,7 +478,7 @@ app.post('/api/chatbot', rateLimit, async (req, res) => {
     const groqKey = getEnv('GROQ_API_KEY');
     if (!botResponse && groqKey) {
       console.log('🚀 Tentative d\'appel Groq API...');
-      botResponse = await callGroq(messages, groqKey, 5000);
+      botResponse = await callGroq(messages, groqKey, 3000);
       if (botResponse) {
         source = 'groq';
         console.log('✅ Réponse générée via Groq');
@@ -486,7 +489,7 @@ app.post('/api/chatbot', rateLimit, async (req, res) => {
     const openrouterKey = getEnv('OPENROUTER_API_KEY');
     if (!botResponse && openrouterKey) {
       console.log('🚀 Tentative d\'appel OpenRouter API...');
-      botResponse = await callOpenRouter(messages, openrouterKey, 5500);
+      botResponse = await callOpenRouter(messages, openrouterKey, 3500);
       if (botResponse) {
         source = 'openrouter';
         console.log('✅ Réponse générée via OpenRouter');

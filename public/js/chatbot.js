@@ -616,10 +616,32 @@ Question de l'utilisateur : ${userMsg}
 
         let botResponse = data.response || data.choices?.[0]?.message?.content || data.message || data.content;
 
-        // Si la réponse est vide, secours local immédiat
+        function buildFrontendFallback(text) {
+          const u = (text || '').toLowerCase().trim();
+          if (u.match(/^(salut|bonjour|bonsoir|hello|hi|hey|coucou|yo|ça va|ca va)[\s!?]*$/i)) {
+            return "Salut ! Ça va très bien ! Je suis Goku, l'assistant virtuel de Chadi. Que veux-tu savoir sur son parcours ou ses projets ?";
+          } else if (u.includes('qui est') || u.includes('qui es-tu') || u.includes('présente') || u.includes('presente') || u.includes('chadi') || u.includes('bio')) {
+            return "Chadi Abouhnaik est un étudiant ultra-motivé en **Master Réseaux, Objets Connectés et IA au CNAM** (2025–2027), après un BUT Réseaux & Télécoms ! Passionné par les infrastructures IT critiques, la cybersécurité et l'automatisation, il recherche activement une **alternance pour septembre 2025** en France ou au Luxembourg !";
+          } else if (u.includes('sait faire') || u.includes('faire quoi') || u.includes('compétence') || u.includes('competence') || u.includes('skills') || u.includes('savoir faire')) {
+            return "Chadi a un niveau technique impressionnant ! Il maîtrise 4 domaines clés :\n\n- **Réseaux & Sécurité** : Switchs/routeurs Cisco (certifié CCNA 1, 2, 3), VLANs, OSPF, VPN IPSec, firewalls pfSense/ASA, Wireshark.\n- **Systèmes & Cloud** : Windows Server (Active Directory, DNS), Linux (Debian, Ubuntu), virtualisation VMware/Proxmox et Cloud Azure/AWS.\n- **DevOps & Automatisation** : Scripts Python, PowerShell, Bash et conteneurs Docker.\n- **Supervision IT & Projets** : Sentinelle 4.0 (cybersécurité IoT avec Suricata IDS) et monitoring complet (Prometheus, Grafana).";
+          } else if (u.includes('réseau') || u.includes('cisco') || u.includes('switch') || u.includes('vlan')) {
+            return "Chadi maîtrise les **réseaux et la sécurité** : configuration de switchs/routeurs **Cisco**, **VLAN**, routage dynamique (**OSPF**), **VPN IPSec**, pare-feu (**pfSense**, Cisco ASA) et analyse avec **Wireshark**. Il a validé les modules **CCNA 1, 2 et 3** !";
+          } else if (u.includes('programm') || u.includes('code') || u.includes('dev') || u.includes('python')) {
+            return "Chadi programme principalement en **Python**, **JavaScript (Node.js)**, **PowerShell** et **Bash**. Il conçoit des scripts d'automatisation d'infrastructure, des bots et des services web.";
+          } else if (u.includes('jtekt') || u.includes('stage')) {
+            return "Lors de son **stage de 3 mois chez JTEKT**, Chadi a déployé un serveur **SFTP sécurisé**, participé au **Plan de Reprise d'Activité (PRA)**, et automatisé des tâches d'administration système avec **PowerShell**.";
+          } else if (u.includes('alternance') || u.includes('recrut') || u.includes('embauche')) {
+            return "Chadi recherche activement une **alternance dès septembre 2025** dans le cadre de son **Master au CNAM** (Réseaux, IoT et IA). Il est mobile en France et au Luxembourg !";
+          } else if (u.includes('certif') || u.includes('ccna')) {
+            return "Chadi est issu de la **Cisco Networking Academy** : il a validé **CCNA 1**, **CCNA 2**, **CCNA 3** ainsi que **Cisco IT Essentials**, et prépare l'examen CCNA officiel.";
+          }
+          return "Je suis Goku, l'assistant de Chadi ! Je peux te parler en détail de ses **compétences réseaux & Cisco**, de son **développement** (Python, PowerShell, JS), de son **stage chez JTEKT**, de ses **projets** (Sentinelle 4.0, monitoring) ou de son **Master au CNAM**. Que souhaites-tu découvrir ?";
+        }
+
+        // Si la réponse est vide, secours local intelligent
         if (!botResponse || typeof botResponse !== 'string' || botResponse.trim() === '') {
           console.warn('⚠️ Réponse vide du serveur, utilisation du fallback local');
-          botResponse = "Je suis Goku, l'assistant virtuel de Chadi ! Je peux te renseigner sur ses **compétences réseaux & Cisco**, sa **programmation** (Python, PowerShell, JS), son **stage chez JTEKT**, ses **projets académiques** (Sentinelle 4.0, monitoring) ou sa recherche d'**alternance**. Que souhaites-tu savoir ?";
+          botResponse = buildFrontendFallback(userMsg);
         }
 
         loadingMsg.remove();
@@ -631,26 +653,7 @@ Question de l'utilisateur : ${userMsg}
         console.error('❌ Erreur lors de l\'échange avec le chatbot:', error);
         loadingMsg.remove();
         
-        // Réponse intelligente locale adaptée à la question même en cas de coupure réseau
-        let fallbackResponse = '';
-        const userMsgLower = userMsg.toLowerCase();
-
-        if (userMsgLower.match(/^(salut|bonjour|bonsoir|hello|hi|hey|coucou|yo|ça va|ca va)[\s!?]*$/i)) {
-          fallbackResponse = "Salut ! Ça va très bien ! Je suis Goku, l'assistant de Chadi. Que veux-tu savoir sur son parcours ou ses projets ?";
-        } else if (userMsgLower.includes('réseau') || userMsgLower.includes('cisco') || userMsgLower.includes('switch') || userMsgLower.includes('vlan')) {
-          fallbackResponse = "Chadi maîtrise les **réseaux et la sécurité** : configuration de switchs/routeurs **Cisco**, **VLAN**, routage dynamique (**OSPF**), **VPN IPSec**, pare-feu (**pfSense**, Cisco ASA) et analyse avec **Wireshark**. Il a validé les modules **CCNA 1, 2 et 3** !";
-        } else if (userMsgLower.includes('programm') || userMsgLower.includes('code') || userMsgLower.includes('dev') || userMsgLower.includes('python')) {
-          fallbackResponse = "Chadi programme principalement en **Python**, **JavaScript (Node.js)**, **PowerShell** et **Bash**. Il conçoit des scripts d'automatisation d'infrastructure, des bots et des services web.";
-        } else if (userMsgLower.includes('jtekt') || userMsgLower.includes('stage')) {
-          fallbackResponse = "Lors de son **stage de 3 mois chez JTEKT**, Chadi a déployé un serveur **SFTP sécurisé**, participé au **Plan de Reprise d'Activité (PRA)**, et automatisé des tâches d'administration système avec **PowerShell**.";
-        } else if (userMsgLower.includes('alternance') || userMsgLower.includes('recrut') || userMsgLower.includes('embauche')) {
-          fallbackResponse = "Chadi recherche activement une **alternance dès septembre 2025** dans le cadre de son **Master au CNAM** (Réseaux, IoT et IA). Il est mobile en France et au Luxembourg !";
-        } else if (userMsgLower.includes('certif') || userMsgLower.includes('ccna')) {
-          fallbackResponse = "Chadi est issu de la **Cisco Networking Academy** : il a validé **CCNA 1**, **CCNA 2**, **CCNA 3** ainsi que **Cisco IT Essentials**, et prépare l'examen CCNA officiel.";
-        } else {
-          fallbackResponse = "Je suis Goku, l'assistant de Chadi ! Je peux te parler de ses **compétences en réseaux**, de son **développement**, de son **stage chez JTEKT**, de ses **projets** (Sentinelle 4.0) ou de son **Master au CNAM**. Que souhaites-tu découvrir ?";
-        }
-        
+        const fallbackResponse = buildFrontendFallback(userMsg);
         addMessage('assistant', markdownToHtml(fallbackResponse));
         messages.push({ role: 'assistant', content: fallbackResponse });
       }
