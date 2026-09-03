@@ -609,74 +609,53 @@ Réponds de manière naturelle et technique, en utilisant ces informations pour 
         
         clearTimeout(timeoutId);
 
-        if (!response.ok) {
-          // Essayer d'extraire un message d'erreur structuré du serveur
-          let errPayload = '';
-          try { errPayload = await response.text(); } catch (_) {}
-          throw new Error(`HTTP ${response.status}${errPayload ? ' - ' + errPayload : ''}`);
+        let data = {};
+        try {
+          data = await response.json();
+        } catch (_) {
+          data = {};
         }
 
-        const data = await response.json();
-        console.log('Réponse reçue du serveur:', data);
-        
-        let botResponse;
-        if (data.timeout) {
-          // Réponse de timeout avec fallback intelligent
-          botResponse = data.response;
-          console.log('⏰ Timeout détecté, utilisation du fallback:', botResponse);
-        } else {
-          // Réponse normale de l'API - essayer plusieurs chemins
-          botResponse = data.response || data.choices?.[0]?.message?.content || data.message || data.content;
-          
-          // Si toujours vide, utiliser un fallback
-          if (!botResponse || botResponse.trim() === '') {
-            console.warn('⚠️ Réponse vide détectée, utilisation du fallback');
-            botResponse = 'Désolé, je n\'ai pas pu traiter ta question. Mais je peux te parler des compétences de Chadi en réseaux, programmation, son stage chez JTEKT, ses projets ou ses certifications Cisco. Que veux-tu savoir ?';
-          }
+        console.log('📡 Réponse reçue du serveur:', data);
+
+        let botResponse = data.response || data.choices?.[0]?.message?.content || data.message || data.content;
+
+        // Si la réponse est vide, secours local immédiat
+        if (!botResponse || typeof botResponse !== 'string' || botResponse.trim() === '') {
+          console.warn('⚠️ Réponse vide du serveur, utilisation du fallback local');
+          botResponse = "Je suis Goku, l'assistant virtuel de Chadi ! Je peux te renseigner sur ses **compétences réseaux & Cisco**, sa **programmation** (Python, PowerShell, JS), son **stage chez JTEKT**, ses **projets académiques** (Sentinelle 4.0, monitoring) ou sa recherche d'**alternance**. Que souhaites-tu savoir ?";
         }
-        
-        console.log('Réponse extraite:', botResponse);
-        console.log('Longueur de la réponse:', botResponse.length);
 
         loadingMsg.remove();
         addMessage('assistant', markdownToHtml(botResponse));
         messages.push({ role: 'assistant', content: botResponse });
-        console.log('✅ Message assistant ajouté:', botResponse.substring(0, 50) + '...');
+        console.log('✅ Message assistant affiché avec succès');
 
       } catch (error) {
-        console.error('❌ Erreur lors de l\'appel API:', error);
-        console.error('❌ Type d\'erreur:', error.name);
-        console.error('❌ Message d\'erreur:', error.message);
+        console.error('❌ Erreur lors de l\'échange avec le chatbot:', error);
         loadingMsg.remove();
         
-        // Réponse plus spécifique selon le type d'erreur
-        let fallbackResponse;
-        if (error.name === 'AbortError') {
-          console.warn('⏰ Timeout côté client - le serveur prend trop de temps');
-          // Utiliser le fallback local intelligent basé sur la question
-          const userMsgLower = userMsg.toLowerCase();
-          if (userMsgLower.includes('réseau') || userMsgLower.includes('cisco') || userMsgLower.includes('switch')) {
-            fallbackResponse = "Chadi maîtrise les **réseaux** ! Il utilise **Cisco Packet Tracer**, configure **switch/router**, **VLAN**, **routage statique/dynamique** et la **sécurité réseau**. Il a aussi des **certifications Cisco** (CCNA en cours) et connaît les protocoles **TCP/IP**, **DHCP**, **DNS**. Il prépare le **CCNA** et utilise **Wireshark** pour l'analyse réseau !";
-          } else if (userMsgLower.includes('programm') || userMsgLower.includes('code') || userMsgLower.includes('dev') || userMsgLower.includes('python')) {
-            fallbackResponse = "Chadi code en **Python**, **JavaScript**, **HTML/CSS**, **SQL**, **PowerShell** et **Bash** ! Il utilise **Git**, **Docker**, **VS Code** et **Wireshark**. Il a fait un **bot Discord** pour son école, des **scripts d'automatisation** et ce **site web portfolio**. Il aime l'automatisation et les projets pratiques !";
-          } else if (userMsgLower.includes('jtekt') || userMsgLower.includes('stage') || userMsgLower.includes('entreprise')) {
-            fallbackResponse = "Chadi a fait un **stage de 3 mois chez JTEKT** ! Il a travaillé sur la **migration de serveurs** (Windows vers Linux), la **sécurisation réseau** (firewall, VPN), l'**automatisation** avec PowerShell et participé à la **gestion de crise informatique**. Il a aussi créé des scripts d'automatisation pour optimiser les processus !";
-          } else if (userMsgLower.includes('ia') || userMsgLower.includes('intelligence') || userMsgLower.includes('artificielle')) {
-            fallbackResponse = "Chadi est étudiant en **Master Réseaux, Objets Connectés et Intelligence Artificielle** au CNAM ! Il cherche une **alternance pour septembre 2025** dans ce domaine. Il a des compétences en **réseaux**, **programmation Python**, **IoT**, et s'intéresse à l'**IA appliquée aux infrastructures** et à la **cybersécurité IoT** !";
-          } else {
-            fallbackResponse = "⏰ Le serveur met du temps à répondre... Mais je peux te parler des compétences de Chadi en réseaux, programmation, son stage chez JTEKT, ses projets ou ses certifications Cisco. Que veux-tu savoir ?";
-          }
-        } else if (/401|403/.test(error.message)) {
-          fallbackResponse = "⚠️ Autorisation API refusée. Vérifie la clé OPENROUTER côté serveur.";
-        } else if (/429/.test(error.message)) {
-          fallbackResponse = "⏳ Trop de requêtes à l'API en ce moment. Réessaie dans quelques secondes.";
-        } else if (/OPENROUTER_API_KEY manquante/.test(error.message)) {
-          fallbackResponse = "⚙️ Configuration manquante côté serveur (clé API).";
+        // Réponse intelligente locale adaptée à la question même en cas de coupure réseau
+        let fallbackResponse = '';
+        const userMsgLower = userMsg.toLowerCase();
+
+        if (userMsgLower.match(/^(salut|bonjour|bonsoir|hello|hi|hey|coucou|yo|ça va|ca va)[\s!?]*$/i)) {
+          fallbackResponse = "Salut ! Ça va très bien ! Je suis Goku, l'assistant de Chadi. Que veux-tu savoir sur son parcours ou ses projets ?";
+        } else if (userMsgLower.includes('réseau') || userMsgLower.includes('cisco') || userMsgLower.includes('switch') || userMsgLower.includes('vlan')) {
+          fallbackResponse = "Chadi maîtrise les **réseaux et la sécurité** : configuration de switchs/routeurs **Cisco**, **VLAN**, routage dynamique (**OSPF**), **VPN IPSec**, pare-feu (**pfSense**, Cisco ASA) et analyse avec **Wireshark**. Il a validé les modules **CCNA 1, 2 et 3** !";
+        } else if (userMsgLower.includes('programm') || userMsgLower.includes('code') || userMsgLower.includes('dev') || userMsgLower.includes('python')) {
+          fallbackResponse = "Chadi programme principalement en **Python**, **JavaScript (Node.js)**, **PowerShell** et **Bash**. Il conçoit des scripts d'automatisation d'infrastructure, des bots et des services web.";
+        } else if (userMsgLower.includes('jtekt') || userMsgLower.includes('stage')) {
+          fallbackResponse = "Lors de son **stage de 3 mois chez JTEKT**, Chadi a déployé un serveur **SFTP sécurisé**, participé au **Plan de Reprise d'Activité (PRA)**, et automatisé des tâches d'administration système avec **PowerShell**.";
+        } else if (userMsgLower.includes('alternance') || userMsgLower.includes('recrut') || userMsgLower.includes('embauche')) {
+          fallbackResponse = "Chadi recherche activement une **alternance dès septembre 2025** dans le cadre de son **Master au CNAM** (Réseaux, IoT et IA). Il est mobile en France et au Luxembourg !";
+        } else if (userMsgLower.includes('certif') || userMsgLower.includes('ccna')) {
+          fallbackResponse = "Chadi est issu de la **Cisco Networking Academy** : il a validé **CCNA 1**, **CCNA 2**, **CCNA 3** ainsi que **Cisco IT Essentials**, et prépare l'examen CCNA officiel.";
         } else {
-          fallbackResponse = "Désolé, je n'ai pas pu traiter ta question. Mais je peux te parler des compétences de Chadi en réseaux, programmation, son stage chez JTEKT, ses projets ou ses certifications Cisco. Que veux-tu savoir ?";
+          fallbackResponse = "Je suis Goku, l'assistant de Chadi ! Je peux te parler de ses **compétences en réseaux**, de son **développement**, de son **stage chez JTEKT**, de ses **projets** (Sentinelle 4.0) ou de son **Master au CNAM**. Que souhaites-tu découvrir ?";
         }
         
-        addMessage('assistant', fallbackResponse);
+        addMessage('assistant', markdownToHtml(fallbackResponse));
         messages.push({ role: 'assistant', content: fallbackResponse });
       }
     });
