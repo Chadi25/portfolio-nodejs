@@ -15,9 +15,8 @@ if (dotenvResult && dotenvResult.parsed) {
   console.log('🌍 dotenv keys =', Object.keys(dotenvResult.parsed));
 }
 
-const app = express();
-// Remplacement de l'import node-fetch pour compatibilité CommonJS/v3+
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+// Utiliser fetch natif si disponible (Node 18+) ou node-fetch
+const fetch = globalThis.fetch ? globalThis.fetch.bind(globalThis) : ((...args) => import('node-fetch').then(({default: f}) => f(...args)));
 
 // Utiliser le port de Vercel ou 3000 en local
 const port = process.env.PORT || 3000;
@@ -357,7 +356,7 @@ async function callGemini(systemPrompt, userMsg, apiKey, timeoutMs = 5500) {
 }
 
 // Provider 2: OpenRouter (avec routeur openrouter/free et modèles de secours gratuits)
-async function callOpenRouter(messages, apiKey, timeoutMs = 5500) {
+async function callOpenRouter(messages, apiKey, timeoutMs = 2500) {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
@@ -489,7 +488,7 @@ app.post('/api/chatbot', rateLimit, async (req, res) => {
     const openrouterKey = getEnv('OPENROUTER_API_KEY');
     if (!botResponse && openrouterKey) {
       console.log('🚀 Tentative d\'appel OpenRouter API...');
-      botResponse = await callOpenRouter(messages, openrouterKey, 3500);
+      botResponse = await callOpenRouter(messages, openrouterKey, 2500);
       if (botResponse) {
         source = 'openrouter';
         console.log('✅ Réponse générée via OpenRouter');
