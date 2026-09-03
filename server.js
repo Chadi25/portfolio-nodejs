@@ -15,6 +15,8 @@ if (dotenvResult && dotenvResult.parsed) {
   console.log('🌍 dotenv keys =', Object.keys(dotenvResult.parsed));
 }
 
+const app = express();
+
 // Utiliser fetch natif si disponible (Node 18+) ou node-fetch
 const fetch = globalThis.fetch ? globalThis.fetch.bind(globalThis) : ((...args) => import('node-fetch').then(({default: f}) => f(...args)));
 
@@ -296,11 +298,11 @@ function cleanBotResponse(text) {
 }
 
 // Provider 1: Google Gemini (direct REST API, ultra-rapide < 2s, 1500 req/jour gratuites)
-async function callGemini(systemPrompt, userMsg, apiKey, timeoutMs = 5500) {
+async function callGemini(systemPrompt, userMsg, apiKey, timeoutMs = 6500) {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
-  const models = ['gemini-2.5-flash', 'gemini-flash-latest', 'gemini-2.5-flash-lite'];
+  const models = ['gemini-2.5-flash-lite', 'gemini-2.5-flash'];
 
   for (const model of models) {
     try {
@@ -466,7 +468,7 @@ app.post('/api/chatbot', rateLimit, async (req, res) => {
     const geminiKey = getEnv('GEMINI_API_KEY');
     if (!botResponse && geminiKey) {
       console.log('🚀 Tentative d\'appel Google Gemini API...');
-      botResponse = await callGemini(systemPrompt, lastUserMessage, geminiKey, 5000);
+      botResponse = await callGemini(systemPrompt, lastUserMessage, geminiKey, 6500);
       if (botResponse) {
         source = 'gemini';
         console.log('✅ Réponse générée via Google Gemini');
