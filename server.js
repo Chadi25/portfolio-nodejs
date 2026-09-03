@@ -47,15 +47,6 @@ const GEMINI_API_KEY = getEnv('GEMINI_API_KEY');
 const OPENROUTER_API_KEY = getEnv('OPENROUTER_API_KEY');
 const GROQ_API_KEY = getEnv('GROQ_API_KEY');
 
-// Endpoint de diagnostic sécurisé (ne divulgue aucune clé, uniquement vrai/faux)
-app.get('/api/health-ai', (req, res) => {
-  res.json({
-    geminiConfigured: !!getEnv('GEMINI_API_KEY'),
-    openrouterConfigured: !!getEnv('OPENROUTER_API_KEY'),
-    groqConfigured: !!getEnv('GROQ_API_KEY')
-  });
-});
-
 // Debug: Afficher les fournisseurs IA configurés
 console.log('🤖 Fournisseurs IA configurés :');
 console.log('   - Google Gemini :', GEMINI_API_KEY ? '✅ OUI' : '❌ NON');
@@ -455,6 +446,15 @@ async function callGroq(messages, apiKey, timeoutMs = 5000) {
     return null;
   }
 }
+
+// Endpoint de diagnostic sécurisé (ne divulgue aucune clé, uniquement vrai/faux)
+app.get('/api/health-ai', (req, res) => {
+  res.json({
+    geminiConfigured: !!getEnv('GEMINI_API_KEY'),
+    openrouterConfigured: !!getEnv('OPENROUTER_API_KEY'),
+    groqConfigured: !!getEnv('GROQ_API_KEY')
+  });
+});
 
 app.post('/api/chatbot', rateLimit, async (req, res) => {
   try {
