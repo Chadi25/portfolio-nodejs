@@ -111,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         );
 
         const isCertificationsPage = currentPath === '/certifications';
+        const isPortfolioPage = currentPath === '/portfolio';
         let isTransitioning = false;
         let lastNavTime = Date.now();
         const navCooldown = 800;
@@ -201,6 +202,8 @@ document.addEventListener('DOMContentLoaded', () => {
                    target.closest('.chatbot-widget') ||
                    target.closest('.chatbot-container') ||
                    target.closest('.chatbot-form') ||
+                   target.closest('.project-content') ||
+                   target.closest('.portfolio-container') ||
                    document.body.classList.contains('chatbot-open');
         }
 
@@ -210,6 +213,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             
+            // Sur la page portfolio, la navigation est gérée localement par portfolio.js
+            if (isPortfolioPage) {
+                return;
+            }
+
             // Vérifier si l'utilisateur scrolle dans un élément spécifique avec scroll natif
             const target = e.target;
             
@@ -229,8 +237,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     navigateToPage(e.deltaY > 0 ? 'next' : 'prev');
                 }
             } else {
-                // e.preventDefault(); // Scroll natif rétabli
                 if (isTransitioning) return;
+
+                // Reset de l'accumulation après un court silence
+                clearTimeout(wheelTimeout);
+                wheelTimeout = setTimeout(() => {
+                    accumulatedDelta = 0;
+                }, 300);
 
                 // Accumulation du scroll pour trackpad
                 const dominantDelta = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
@@ -243,9 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 accumulatedDelta += dominantDelta;
 
-                console.log('Trackpad debug:', 'accumulatedDelta:', accumulatedDelta, 'direction:', direction);
-
-                if (Math.abs(accumulatedDelta) > 40) { // seuil à ajuster si besoin
+                if (Math.abs(accumulatedDelta) > 100) {
                     navigateToPage(direction);
                     accumulatedDelta = 0;
                 }

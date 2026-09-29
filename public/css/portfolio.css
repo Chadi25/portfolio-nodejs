@@ -77,6 +77,7 @@
     /* SCROLL INTERNE : tout le contenu reste accessible */
     height: calc(100vh - var(--nav-height) - 6rem);
     overflow-y: auto;
+    overscroll-behavior: contain;
 
     /* Scrollbar discrète */
     scrollbar-width: thin;
