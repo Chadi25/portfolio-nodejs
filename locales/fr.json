@@ -33,7 +33,10 @@
 		"send": "Envoyer le message",
 		"sending": "Envoi en cours...",
 		"success": "Message envoyé avec succès !",
-		"error": "Une erreur est survenue lors de l'envoi."
+		"error": "Une erreur est survenue lors de l'envoi.",
+		"name_placeholder": "contact.name_placeholder",
+		"message_placeholder": "contact.message_placeholder",
+		"location": "contact.location"
 	},
 	"portfolio": {
 		"view_project": "View Project",
