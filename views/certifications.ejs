@@ -1,0 +1,48 @@
+<div class="certifications-container">
+    <div class="file-header">
+        <span class="comment stylish-title"><%= __('certs.title') %></span>
+    </div>
+
+    <div class="cisco-certs">
+        <div class="certs-grid">
+            <% for(let i=1; i<=6; i++) { %>
+            <div class="cert-card">
+                <div class="cert-header">
+                    <span class="cert-type"><%= __('certs.c' + i + '.type') %></span>
+                    <span class="cert-date"><%= __('certs.c' + i + '.date') %></span>
+                </div>
+                <h3 class="cert-title"><%- __('certs.c' + i + '.title') %></h3>
+                <div class="cert-content">
+                    <ul class="skill-list">
+                        <li><%- __('certs.c' + i + '.s1') %></li>
+                        <li><%- __('certs.c' + i + '.s2') %></li>
+                        <li><%- __('certs.c' + i + '.s3') %></li>
+                        <li><%- __('certs.c' + i + '.s4') %></li>
+                        <% if(i === 5) { %>
+                        <li><%- __('certs.c' + i + '.s5') %></li>
+                        <% } %>
+                    </ul>
+                    <% 
+                    let certId = 'cert' + i;
+                    if(i === 6) certId = 'certification5'; // as in original code
+                    else if(i === 1) certId = 'cert3';
+                    else if(i === 2) certId = 'cert1';
+                    else if(i === 3) certId = 'cert2';
+                    else if(i === 4) certId = 'cert4';
+                    else if(i === 5) certId = 'cert5';
+                    %>
+                    <button class="view-cert" onclick="showCertDetails('<%= certId %>')"><%= __('certs.view_details') %></button>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </div>
+
+    <!-- Modal pour afficher les détails -->
+    <div id="certModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <iframe id="certViewer" width="100%" height="100%"></iframe>
+        </div>
+    </div>
+</div>

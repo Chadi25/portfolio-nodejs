@@ -1,0 +1,100 @@
+<div class="portfolio-container">
+    <div id="projects">
+        <% for(let i=1; i<=8; i++) { %>
+        <!-- Projet <%= i %> -->
+        <div class="project <%= i === 1 ? 'active' : '' %>">
+            <div class="project-content">
+                <div class="comment"><%- __('portfolio.projects.p' + i + '.comment') %></div>
+                <h2 class="title"><%- __('portfolio.projects.p' + i + '.title') %></h2>
+                
+                <% if(i <= 4) { %>
+                <div class="project-metrics">
+                    <span class="metric-badge"><%- __('portfolio.projects.p' + i + '.m1') %></span>
+                    <span class="metric-badge"><%- __('portfolio.projects.p' + i + '.m2') %></span>
+                    <span class="metric-badge"><%- __('portfolio.projects.p' + i + '.m3') %></span>
+                </div>
+                <% } %>
+
+                <p class="description">
+                    <%- __('portfolio.projects.p' + i + '.desc') %>
+                </p>
+
+                <div class="contribution">
+                    <h4><%- __('portfolio.projects.p' + i + '.contrib_title') %></h4>
+                    <ul>
+                        <li><%- __('portfolio.projects.p' + i + '.c1') %></li>
+                        <li><%- __('portfolio.projects.p' + i + '.c2') %></li>
+                        <li><%- __('portfolio.projects.p' + i + '.c3') %></li>
+                        <% if(i === 1 || i === 8) { %>
+                        <li><%- __('portfolio.projects.p' + i + '.c4') %></li>
+                        <% } %>
+                    </ul>
+                </div>
+
+                <div class="tech-stack">
+                    <% if(i === 1) { %>
+                    <span class="tech">GenAI Industrielle</span><span class="tech">RAG</span><span class="tech">Ollama</span><span class="tech">FAISS</span><span class="tech">LangChain</span><span class="tech">RRF</span><span class="tech">Python REST API</span>
+                    <% } else if(i === 2) { %>
+                    <span class="tech">Zero Trust</span><span class="tech">Teleport CE</span><span class="tech">Debian 12</span><span class="tech">Hardening (chroot/ACLs)</span><span class="tech">mTLS / SSH éphémère</span><span class="tech">RBAC</span>
+                    <% } else if(i === 3) { %>
+                    <span class="tech">NAC 802.1X</span><span class="tech">Cisco 2960-X</span><span class="tech">Segmentation VLANs</span><span class="tech">NPS RADIUS</span><span class="tech">Python</span><span class="tech">Bash</span><span class="tech">Automatisation</span>
+                    <% } else if(i === 4) { %>
+                    <span class="tech">Debian 12</span><span class="tech">Python</span><span class="tech">Bash</span><span class="tech">SFTP</span><span class="tech">systemd</span><span class="tech">ACLs POSIX</span>
+                    <% } else if(i === 5) { %>
+                    <span class="tech">python</span><span class="tech">mqtt</span><span class="tech">raspberry pi</span>
+                    <% } else if(i === 6) { %>
+                    <span class="tech">IoT</span><span class="tech">Cyber-sécurité</span><span class="tech">pilotage/gestion de projet</span>
+                    <% } else if(i === 7) { %>
+                    <span class="tech">MQTT</span><span class="tech">Nodered</span><span class="tech">Graffana</span><span class="tech">InfluxDB</span>
+                    <% } else if(i === 8) { %>
+                    <span class="tech">VMware</span><span class="tech">vCenter</span><span class="tech">Veeam</span><span class="tech">SAN</span>
+                    <% } %>
+                </div>
+                
+                <% if(i === 1) { %>
+                <a href="https://github.com/Chadi25/secure-hybrid-search" target="_blank" rel="noopener noreferrer" class="view-btn"><%= __('portfolio.view_project') %></a>
+                <% } else if(i === 5) { %>
+                <a href="https://github.com/Chadi25/SAE304_Decouvrir_et_mettre_en_place_un_r-seau_IoT" target="_blank" class="view-btn"><%= __('portfolio.view_project') %></a>
+                <% } else if(i === 6) { %>
+                <a href="https://github.com/Chadi25/-SA-5.02-Piloter-un-projet-informatique" target="_blank" class="view-btn"><%= __('portfolio.view_project') %></a>
+                <% } else if(i === 7) { %>
+                <a href="https://github.com/Chadi25/SA-4.IOM.01-Impl-menter-les-r-seaux-et-protocoles-sans-fil-d-di-s-l-IoT" target="_blank" class="view-btn"><%= __('portfolio.view_project') %></a>
+                <% } else { %>
+                <a href="#" class="view-btn"><%= __('portfolio.view_project') %></a>
+                <% } %>
+            </div>
+            
+            <% 
+            let img = '';
+            if(i===1) img='/images/chadibot.png';
+            if(i===2) img='/images/teleport.jpg';
+            if(i===3) img='/images/nac.jpg';
+            if(i===4) img='/images/jtekt_sftp.png';
+            if(i===5) img='/images/minecraft.webp';
+            if(i===6) img='/images/hopital.webp';
+            if(i===7) img='/images/data-center.jpg';
+            if(i===8) img='/images/jtekt_infra.png';
+            %>
+            <div class="background" style="background-image: url('<%= img %>')"></div>
+        </div>
+        <% } %>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-buttons">
+        <button class="prev" onclick="prevProject()"><%= __('portfolio.prev') %></button>
+        <button class="next" onclick="nextProject()"><%= __('portfolio.next') %></button>
+    </div>
+
+    <!-- Previews -->
+    <div class="previews">
+        <div class="preview active" onclick="showProject(0)" style="background-image: url('/images/chadibot.png')"></div>
+        <div class="preview" onclick="showProject(1)" style="background-image: url('/images/teleport.jpg')"></div>
+        <div class="preview" onclick="showProject(2)" style="background-image: url('/images/nac.jpg')"></div>
+        <div class="preview" onclick="showProject(3)" style="background-image: url('/images/jtekt_sftp.png')"></div>
+        <div class="preview" onclick="showProject(4)" style="background-image: url('/images/minecraft.webp')"></div>
+        <div class="preview" onclick="showProject(5)" style="background-image: url('/images/hopital.webp')"></div>
+        <div class="preview" onclick="showProject(6)" style="background-image: url('/images/data-center.jpg')"></div>
+        <div class="preview" onclick="showProject(7)" style="background-image: url('/images/jtekt_infra.png')"></div>
+    </div>
+</div>
