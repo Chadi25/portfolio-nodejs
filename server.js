@@ -101,9 +101,10 @@ function buildLocalFallback(userMessageRaw = '') {
     userMessage.includes('contrat') ||
     userMessage.includes('dispo') ||
     userMessage.includes('mobile') ||
-    userMessage.includes('luxembourg')
+    userMessage.includes('luxembourg') ||
+    userMessage.includes('suisse')
   ) {
-    fallbackResponse = "Chadi recherche activement un **stage de fin d'études de 6 mois à partir de fin février 2027** dans le cadre de son **Master 2 (Réseaux, Objets Connectés et IA au CNAM)**. Il cible des opportunités en **ingénierie réseaux**, **cybersécurité Zero Trust**, **IA appliquée (RAG)** ou **systèmes / Cloud**. Il est mobile en France et au Luxembourg !";
+    fallbackResponse = "Chadi recherche activement un **stage de fin d'études de 6 mois à partir de fin février 2027** dans le cadre de son **Master 2 (Réseaux, Objets Connectés et IA au CNAM)**. Il cible des opportunités en **ingénierie réseaux**, **cybersécurité Zero Trust**, **IA appliquée (RAG)** ou **systèmes / Cloud**. Il est mobile en France, en Suisse et au Luxembourg !";
   } else if (
     userMessage.includes('formation') ||
     userMessage.includes('étude') ||
@@ -233,7 +234,7 @@ function buildLocalFallback(userMessageRaw = '') {
     userMessage.includes('presente') ||
     userMessage.includes('bio')
   ) {
-    fallbackResponse = "Chadi Abouhnaik est en **Master 2 Réseaux, Objets Connectés et IA au CNAM** (2025–2027), après un BUT Réseaux & Télécoms. Fort de son expérience chez **JTEKT Column Systems** en **IA Générative industrielle (RAG)**, **Zero Trust (Teleport)** et **sécurité réseau (NAC 802.1X, Cisco)**, il recherche activement un **stage de fin d'études de 6 mois à partir de fin février 2027** (Master 2) en France ou au Luxembourg !";
+    fallbackResponse = "Chadi Abouhnaik est en **Master 2 Réseaux, Objets Connectés et IA au CNAM** (2025–2027), après un BUT Réseaux & Télécoms. Fort de son expérience chez **JTEKT Column Systems** en **IA Générative industrielle (RAG)**, **Zero Trust (Teleport)** et **sécurité réseau (NAC 802.1X, Cisco)**, il recherche activement un **stage de fin d'études de 6 mois à partir de fin février 2027** (Master 2) en France, en Suisse ou au Luxembourg !";
   } else if (
     userMessage.includes('compétence') ||
     userMessage.includes('competence') ||
