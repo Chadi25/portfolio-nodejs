@@ -103,7 +103,7 @@ function buildLocalFallback(userMessageRaw = '') {
     userMessage.includes('mobile') ||
     userMessage.includes('luxembourg')
   ) {
-    fallbackResponse = "Chadi recherche activement une **alternance pour septembre 2026** dans le cadre de son **Master 2 (Réseaux, Objets Connectés et IA au CNAM)**. Il cible des opportunités en **ingénierie réseaux**, **cybersécurité Zero Trust**, **IA appliquée (RAG)** ou **systèmes / Cloud**. Il est mobile en France et au Luxembourg !";
+    fallbackResponse = "Chadi recherche activement un **stage de fin d'études de 6 mois à partir de fin février 2027** dans le cadre de son **Master 2 (Réseaux, Objets Connectés et IA au CNAM)**. Il cible des opportunités en **ingénierie réseaux**, **cybersécurité Zero Trust**, **IA appliquée (RAG)** ou **systèmes / Cloud**. Il est mobile en France et au Luxembourg !";
   } else if (
     userMessage.includes('formation') ||
     userMessage.includes('étude') ||
@@ -233,7 +233,7 @@ function buildLocalFallback(userMessageRaw = '') {
     userMessage.includes('presente') ||
     userMessage.includes('bio')
   ) {
-    fallbackResponse = "Chadi Abouhnaik est en **Master 2 Réseaux, Objets Connectés et IA au CNAM** (2025–2027), après un BUT Réseaux & Télécoms. Fort de son expérience chez **JTEKT Column Systems** en **IA Générative industrielle (RAG)**, **Zero Trust (Teleport)** et **sécurité réseau (NAC 802.1X, Cisco)**, il recherche activement une **alternance pour septembre 2026** (Master 2) en France ou au Luxembourg !";
+    fallbackResponse = "Chadi Abouhnaik est en **Master 2 Réseaux, Objets Connectés et IA au CNAM** (2025–2027), après un BUT Réseaux & Télécoms. Fort de son expérience chez **JTEKT Column Systems** en **IA Générative industrielle (RAG)**, **Zero Trust (Teleport)** et **sécurité réseau (NAC 802.1X, Cisco)**, il recherche activement un **stage de fin d'études de 6 mois à partir de fin février 2027** (Master 2) en France ou au Luxembourg !";
   } else if (
     userMessage.includes('compétence') ||
     userMessage.includes('competence') ||
@@ -245,7 +245,7 @@ function buildLocalFallback(userMessageRaw = '') {
   ) {
     fallbackResponse = "Chadi possède un profil technique complet axé sur l'impact opérationnel :\n\n- 🤖 **Intelligence Artificielle & GenAI** : Moteurs RAG souverains (Ollama, FAISS, RRF, Python REST APIs).\n- 🛡️ **Cybersécurité & Zero Trust** : Bastion Teleport CE (mTLS/SSH), durcissement Linux Debian 12 (chroot, ACLs POSIX).\n- 🔌 **Réseaux Industriels** : NAC 802.1X sur 24 switchs Cisco 2960-X, segmentation dynamique VLANs, VPN IPSec, firewalls, CCNA 1, 2, 3.\n- ⚙️ **Automatisation & DevOps** : Suite de 12 scripts Python/Bash, PowerShell, Docker, monitoring Prometheus/Grafana.";
   } else {
-    fallbackResponse = "Je suis Goku, l'assistant de Chadi ! Je peux te parler de son **moteur RAG souverain**, de son **bastion Zero Trust Teleport**, de son déploiement **NAC 802.1X Cisco chez JTEKT**, de ses **compétences réseaux & IA**, ou de sa recherche d'**alternance**. Que souhaites-tu découvrir ?";
+    fallbackResponse = "Je suis Goku, l'assistant de Chadi ! Je peux te parler de son **moteur RAG souverain**, de son **bastion Zero Trust Teleport**, de son déploiement **NAC 802.1X Cisco chez JTEKT**, de ses **compétences réseaux & IA**, ou de sa recherche de **stage de fin d'études**. Que souhaites-tu découvrir ?";
   }
 
   return fallbackResponse;
