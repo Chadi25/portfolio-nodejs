@@ -88,11 +88,16 @@
             </div> 
         </div>
                 <div class="nav-links">
-                    <a href="/" class="<%= page === 'home' ? 'active' : '' %>">_home</a>
-                    <a href="/portfolio" class="<%= page === 'portfolio' ? 'active' : '' %>">_portfolio</a>
-                    <a href="/certifications" class="<%= page === 'certifications' ? 'active' : '' %>">_certifications</a>
-                    <a href="/resume" class="<%= page === 'resume' ? 'active' : '' %>">_resume</a>
-                    <a href="/contact" class="<%= page === 'contact' ? 'active' : '' %>">_contact</a>
+                    <a href="/" class="<%= page === 'home' ? 'active' : '' %>"><%= __('nav.home') %></a>
+                    <a href="/portfolio" class="<%= page === 'portfolio' ? 'active' : '' %>"><%= __('nav.portfolio') %></a>
+                    <a href="/certifications" class="<%= page === 'certifications' ? 'active' : '' %>"><%= __('nav.certifications') %></a>
+                    <a href="/resume" class="<%= page === 'resume' ? 'active' : '' %>"><%= __('nav.resume') %></a>
+                    <a href="/contact" class="<%= page === 'contact' ? 'active' : '' %>"><%= __('nav.contact') %></a>
+                    <div class="lang-selector" style="display: inline-block; margin-left: 10px; padding-left: 10px; border-left: 1px solid #444;">
+                        <a href="/lang/fr" style="color: <%= lang === 'fr' ? '#4ade80' : '#888' %>; font-weight: <%= lang === 'fr' ? 'bold' : 'normal' %>;">FR</a>
+                        <span style="color: #444;">|</span>
+                        <a href="/lang/en" style="color: <%= lang === 'en' ? '#4ade80' : '#888' %>; font-weight: <%= lang === 'en' ? 'bold' : 'normal' %>;">EN</a>
+                    </div>
                 </div>
             </nav>
             
@@ -110,5 +115,8 @@
     <script src="/js/contact.js"></script>
     <script src="/js/certifications.js"></script>
     <script src="/js/resume.js"></script>
+    <script>
+        window.CURRENT_LANG = '<%= lang %>';
+    </script>
     <script src="/js/chatbot.js"></script>  <!-- Chatbot sur toutes les pages -->
 </body></html>

@@ -394,17 +394,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // Vérifier si le message d'accueil a déjà été affiché
     if (messages.length === 0 && !welcomeMessageShown) {
       console.log('✅ Affichage du message d\'accueil');
-      const welcomeMessage = `Salut ! Je suis Goku, le bot de Chadi Abouhnaik ! 😊<br><br>
-      Chadi est élève-ingénieur en <strong>Master 2 Réseaux, Objets Connectés et IA au CNAM</strong> (2025–2027), fort de son expérience d'ingénieur stagiaire chez <strong>JTEKT</strong> (RAG souverain, Bastion Zero Trust, NAC Cisco 802.1X). Il recherche activement une <strong>alternance pour septembre 2026</strong> (Master 2) en France ou au Luxembourg !<br><br>
+      const lang = window.CURRENT_LANG || 'fr';
+      let welcomeMessageHTML = '';
+      let welcomeMessagePlain = '';
+      
+      if (lang === 'en') {
+        welcomeMessageHTML = `Hi! I'm Goku, Chadi Abouhnaik's bot! 😊<br><br>
+      Chadi is an engineering student in a <strong>Master 2 in Networks, IoT, and AI at CNAM</strong> (2025–2027), with solid experience as an engineering intern at <strong>JTEKT</strong> (Sovereign RAG, Zero Trust Bastion, Cisco NAC 802.1X). He is actively looking for a <strong>6-month end-of-studies internship starting end of February 2027</strong> in IT / Cloud / DevOps / Cybersecurity in France or Luxembourg!<br><br>
+      I can tell you about his <strong>achievements at JTEKT</strong>, his <strong>technical skills</strong> (AI, Zero Trust, Cisco networks, Python/Bash automation), his <strong>projects</strong>, or his <strong>Cisco certifications</strong>.<br><br>
+      Ask me your questions about Chadi! 🚀`;
+        
+        welcomeMessagePlain = `Hi! I'm Goku, Chadi Abouhnaik's bot! Chadi is an engineering student in a Master 2 in Networks, IoT, and AI at CNAM (2025–2027), with solid experience at JTEKT (Sovereign RAG, Zero Trust, Cisco NAC). He is actively looking for a 6-month end-of-studies internship starting end of February 2027 in IT / Cloud / DevOps / Cybersecurity in France or Luxembourg. Ask me your questions about Chadi!`;
+      } else {
+        welcomeMessageHTML = `Salut ! Je suis Goku, le bot de Chadi Abouhnaik ! 😊<br><br>
+      Chadi est élève-ingénieur en <strong>Master 2 Réseaux, Objets Connectés et IA au CNAM</strong> (2025–2027), fort de son expérience d'ingénieur stagiaire chez <strong>JTEKT</strong> (RAG souverain, Bastion Zero Trust, NAC Cisco 802.1X). Il recherche activement un <strong>stage de fin d'études de 6 mois en IT / Cloud / DevOps / Cybersécurité à partir de fin février 2027</strong> en France ou au Luxembourg !<br><br>
       Je peux te parler de ses <strong>réalisations chez JTEKT</strong>, de ses <strong>compétences techniques</strong> (IA, Zero Trust, réseaux Cisco, automatisation Python/Bash), de ses <strong>projets</strong> ou de ses <strong>certifications Cisco</strong>.<br><br>
       Pose-moi tes questions sur Chadi ! 🚀`;
+        
+        welcomeMessagePlain = `Salut ! Je suis Goku, le bot de Chadi Abouhnaik ! Chadi est élève-ingénieur en Master 2 Réseaux, Objets Connectés et IA au CNAM (2025–2027), fort de son expérience chez JTEKT (RAG souverain, Zero Trust, NAC Cisco). Il recherche activement un stage de fin d'études de 6 mois en IT / Cloud / DevOps / Cybersécurité à partir de fin février 2027 en France ou au Luxembourg. Pose-moi tes questions sur Chadi !`;
+      }
       
-      addMessage('assistant', welcomeMessage);
+      addMessage('assistant', welcomeMessageHTML);
       
       // Ajouter le message d'accueil à l'historique
       messages.push({
         role: 'assistant',
-        content: 'Salut ! Je suis Goku, le bot de Chadi Abouhnaik ! Chadi est élève-ingénieur en Master 2 Réseaux, Objets Connectés et IA au CNAM (2025–2027), fort de son expérience chez JTEKT (RAG souverain, Zero Trust, NAC Cisco). Il recherche activement une alternance pour septembre 2026 en France ou au Luxembourg. Pose-moi tes questions sur Chadi !'
+        content: welcomeMessagePlain
       });
       
       // Marquer comme affiché
@@ -550,7 +565,7 @@ Voici les informations complètes et à jour sur Chadi (2026) :
 
 FORMATION : ${KNOWLEDGE_BASE.personal.formation} (${KNOWLEDGE_BASE.personal.university})
 OBJECTIF : ${KNOWLEDGE_BASE.personal.objective}
-RECHERCHE : Alternance pour septembre 2026 (Master 2) en ingénierie réseaux, cybersécurité Zero Trust, IA industrielle (RAG) ou systèmes/cloud (mobile France / Luxembourg).
+RECHERCHE : Stage de fin d'études de 6 mois en IT / Cloud / DevOps / Cybersécurité à partir de fin février 2027 en France ou au Luxembourg.
 
 EXPÉRIENCE MAJEURE 2026 :
 Stagiaire Ingénieur Systèmes, Réseaux & IA chez JTEKT Column Systems France (Mandeure, 25) - Février à Mai 2026.
@@ -579,6 +594,7 @@ ${certInfo ? '\n' + certInfo : ''}
 ${skillsInfo ? '\n' + skillsInfo : ''}
 
 RÈGLES DE RÉPONSE :
+- Réponds toujours dans la langue exacte utilisée par l'interlocuteur. S'il te parle en anglais, réponds en anglais.
 - Réponds de manière vivante, positive, fière et bien structurée (avec des puces ou paragraphes aérés).
 - Ne répète JAMAIS d'intro robotique mécanique.
 - Mets en valeur l'impact opérationnel et les chiffres clés de son expérience JTEKT (450+ docs, -40% temps, 15 serveurs durcis, 99.8% dispo, 24 switchs Cisco 802.1X, 12 scripts Python/Bash).
@@ -632,7 +648,7 @@ Question de l'utilisateur : ${userMsg}
           if (u.match(/^(salut|bonjour|bonsoir|hello|hi|hey|coucou|yo|ça va|ca va)[\s!?]*$/i)) {
             return "Salut ! Ça va très bien ! Je suis Goku, l'assistant virtuel de Chadi. Que veux-tu savoir sur son parcours, ses compétences ou ses projets chez JTEKT ?";
           } else if (u.includes('qui est') || u.includes('qui es-tu') || u.includes('présente') || u.includes('presente') || u.includes('chadi') || u.includes('bio')) {
-            return "Chadi Abouhnaik est élève-ingénieur en **Master 2 Réseaux, Objets Connectés et IA au CNAM** (2025–2027), après un BUT Réseaux & Télécoms ! Fort de son expérience chez **JTEKT Column Systems** en **GenAI industrielle (RAG)**, **Zero Trust (Teleport)** et **sécurité réseau (NAC 802.1X, Cisco)**, il recherche activement une **alternance pour septembre 2026** (Master 2) en France ou au Luxembourg !";
+            return "Chadi Abouhnaik est élève-ingénieur en **Master 2 Réseaux, Objets Connectés et IA au CNAM** (2025–2027), après un BUT Réseaux & Télécoms ! Fort de son expérience chez **JTEKT Column Systems** en **GenAI industrielle (RAG)**, **Zero Trust (Teleport)** et **sécurité réseau (NAC 802.1X, Cisco)**, il recherche activement un **stage de fin d'études de 6 mois à partir de fin février 2027** en France ou au Luxembourg !";
           } else if (u.includes('jtekt') || u.includes('stage')) {
             return "Durant son expérience d'ingénieur stagiaire chez **JTEKT Column Systems France** (Février–Mai 2026), Chadi a mené 3 réalisations techniques majeures :\n\n- 🤖 **Moteur RAG Hybride Souverain** : Déploiement de LLMs locaux on-premise (Ollama Llama 3/Mistral, FAISS, RRF) pour indexer **450+ documentations techniques sensibles**, réduisant de **40%** le temps de recherche avec 100% de souveraineté on-premise.\n- 🛡️ **Bastion Zero Trust & Hardening** : Déploiement de **Teleport** (certificats éphémères mTLS/SSH, RBAC, vidéo des sessions) et durcissement de **15 serveurs Linux Debian 12** en production (chroot, ACLs POSIX) avec **99,8%** de disponibilité.\n- 🔌 **NAC 802.1X & Automatisation** : Déploiement 802.1X sur **24 commutateurs Cisco 2960-X** (segmentation dynamique) et suite de **12 scripts Python/Bash** d'exploitation d'infrastructure.";
           } else if (u.includes('rag') || u.includes('ia') || u.includes('ollama') || u.includes('faiss') || u.includes('intelligence')) {
@@ -645,8 +661,8 @@ Question de l'utilisateur : ${userMsg}
             return "Chadi maîtrise les **réseaux et la sécurité** : déploiement du contrôle d'accès **NAC 802.1X** sur **24 switchs Cisco 2960-X**, **VLANs**, routage dynamique (**OSPF**), **VPN IPSec**, pare-feu (**pfSense**, Cisco ASA) et analyse avec **Wireshark**. Il a validé les modules **CCNA 1, 2 et 3** !";
           } else if (u.includes('programm') || u.includes('code') || u.includes('dev') || u.includes('python')) {
             return "Chadi programme principalement en **Python** (RAG, FAISS, APIs REST, 12 scripts d'exploitation), **JavaScript (Node.js)**, **PowerShell** et **Bash**. Il conçoit des scripts d'automatisation d'infrastructure, des bots et des services web.";
-          } else if (u.includes('alternance') || u.includes('recrut') || u.includes('embauche')) {
-            return "Chadi recherche activement une **alternance pour septembre 2026** dans le cadre de son **Master 2 au CNAM** (Réseaux, IoT et IA). Il est mobile en France et au Luxembourg !";
+          } else if (u.includes('alternance') || u.includes('stage') || u.includes('recrut') || u.includes('embauche')) {
+            return "Chadi recherche activement un **stage de fin d'études de 6 mois en IT / Cloud / DevOps / Cybersécurité à partir de fin février 2027** dans le cadre de son **Master 2 au CNAM**. Il est mobile en France et au Luxembourg !";
           } else if (u.includes('certif') || u.includes('ccna')) {
             return "Chadi est issu de la **Cisco Networking Academy** : il a validé **CCNA 1**, **CCNA 2**, **CCNA 3** ainsi que **Cisco IT Essentials**, et prépare l'examen CCNA officiel.";
           }

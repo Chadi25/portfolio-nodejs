@@ -3,14 +3,14 @@
         <div class="ascii-art">
             { " " }
         </div>
-        <span class="comment">// Travaillons ensemble !</span>
+        <span class="comment"><%= __('contact.title') %></span>
     </div>
 
     <div class="contact-content">
         <form class="contact-form" action="/send-message" method="POST">
             <div class="form-group">
                 <label class="variable" for="_name">_name</label>
-                <input type="text" id="_name" name="name" required placeholder="futur employeur" />
+                <input type="text" id="_name" name="name" required placeholder="<%= __('contact.name_placeholder') %>" />
             </div>
 
             <div class="form-group">
@@ -20,7 +20,7 @@
 
             <div class="form-group">
                 <label class="variable" for="_message">_message</label>
-                <textarea id="_message" name="message" required placeholder="Entrez votre message ici ..."></textarea>
+                <textarea id="_message" name="message" required placeholder="<%= __('contact.message_placeholder') %>"></textarea>
             </div>
 
             <button type="submit" class="submit-btn">
@@ -43,7 +43,7 @@
 
             <div class="info-group">
                 <span class="label">{LOCATION}</span>
-                <span class="value">Lyon /Paris/Montbeliard(Logement disponible)</span>
+                <span class="value"><%= __('contact.location') %></span>
             </div>
         </div>
 

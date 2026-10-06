@@ -50,9 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Animations de la page principale
     function initMainPageAnimations() {
-        const texts = [
+        const texts = window.TYPING_TEXTS || [
             'Apprenti Ingénieur Réseaux & Sécurité (Master ROC)',
             'Spécialisé dans l\'industrialisation des infrastructures (IaC)',
             'Spécialisé dans les architectures Zero Trust'

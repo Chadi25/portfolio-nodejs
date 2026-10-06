@@ -11,7 +11,7 @@
                 <span class="cursor"></span>
             </div>
             <div class="terminal-welcome hidden">
-                <p class="welcome-text">// Bienvenue sur mon portfolio</p>
+                <p class="welcome-text"><%= __('home.welcome') %></p>
             </div>
         </div>
     </div>
@@ -22,12 +22,20 @@
         {" " }
     </div>
     <div class="intro-text">
-        <h1>// Bonjour je suis Chadi Abouhnaik  ...</h1>
-        <div class="typing-text">Stagiaire Ingénieur Systèmes, Réseaux & IA (Master ROC / CNAM) // Spécialisé en Architectures Zero Trust, Moteurs RAG & Infrastructure Industrielle.</div>
-        <p class="comment">// Passionné par le domaine du réseau et de l'informatique dans son ensemble</p>
+        <h1><%= __('home.hello') %></h1>
+        <div class="typing-text"><%= __('home.typing_default') %></div>
+        <p class="comment"><%= __('home.passion') %></p>
         <div class="scroll-indicator">
-            <span>scroll</span>
+            <span><%= __('home.scroll') %></span>
             <div class="arrow">↓</div>
         </div>
     </div>
 </div>
+
+<script>
+    window.TYPING_TEXTS = <%- JSON.stringify([
+        __('home.typing1'),
+        __('home.typing2'),
+        __('home.typing3')
+    ]) %>;
+</script>
