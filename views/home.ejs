@@ -33,9 +33,9 @@
 </div>
 
 <script>
-    window.TYPING_TEXTS = [
-        "<%= __('home.typing1') %>",
-        "<%= __('home.typing2') %>",
-        "<%= __('home.typing3') %>"
-    ];
+    window.TYPING_TEXTS = <%- JSON.stringify([
+        __('home.typing1'),
+        __('home.typing2'),
+        __('home.typing3')
+    ]) %>;
 </script>

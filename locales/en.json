@@ -1,189 +1,193 @@
 {
-  "nav": {
-    "home": "_home",
-    "portfolio": "_portfolio",
-    "certifications": "_certifications",
-    "resume": "_resume",
-    "contact": "_contact"
-  },
-  "home": {
-    "welcome": "// Welcome to my portfolio",
-    "hello": "// Hello, I am Chadi Abouhnaik  ...",
-    "subtitle": "Systems, Network & AI Engineering Intern (Master ROC / CNAM) // Specialized in Zero Trust Architectures, RAG Engines & Industrial Infrastructure.",
-    "passion": "// Passionate about networking and IT as a whole",
-    "scroll": "scroll",
-    "typing1": "Network & Security Engineering Apprentice (Master ROC)",
-    "typing2": "Specialized in Infrastructure Industrialization (IaC)",
-    "typing3": "Specialized in Zero Trust Architectures"
-  },
-  "resume": {
-    "title": "// RESUME & SKILLS BOOKLET",
-    "view_cv": "📄 View Resume",
-    "view_livret": "📋 View Skills Booklet",
-    "no_pdf": "Cannot display the PDF?",
-    "download": "Click here to download it"
-  },
-  "contact": {
-    "title": "// Contact Me",
-    "subtitle": "Feel free to reach out for any opportunity",
-    "name": "Name",
-    "email": "Email",
-    "message": "Message",
-    "send": "Send Message",
-    "sending": "Sending...",
-    "success": "Message sent successfully!",
-    "error": "An error occurred while sending."
-  },
-  "portfolio": {
-    "view_project": "View Project",
-    "prev": "← prev",
-    "next": "next →",
-    "projects": {
-      "p1": {
-        "comment": "// Project 01 — GenAI & Sovereign RAG",
-        "title": "JTEKT Internship<br>Sovereign RAG Engine<br>& Industrial Generative AI",
-        "m1": "📊 450+ Docs Vectorized",
-        "m2": "⚡ -40% Search Time",
-        "m3": "🔒 100% Sovereign On-Premise",
-        "desc": "<strong>Challenge:</strong> Instantly access over 450 complex technical documentations and engineering reports, with an absolute constraint of sovereignty and industrial confidentiality (zero data leaks, formal ban on using public Cloud APIs).",
-        "contrib_title": "Technical Solution & Operational Impact:",
-        "c1": "<strong>Local LLMs & Sovereignty:</strong> On-premise deployment of open-source models via <strong>Ollama</strong> (Llama 3, Mistral) for local processing without external dependencies.",
-        "c2": "<strong>Dense Vector Indexing:</strong> Semantic vectorization with <strong>FAISS</strong> for instant semantic searches on technical corpuses.",
-        "c3": "<strong>Hybrid Pipeline & RRF:</strong> Combination of lexical and dense search with <strong>Reciprocal Rank Fusion (RRF)</strong> reranking for maximum documentary precision.",
-        "c4": "<strong>Ingestion & APIs:</strong> Data ingestion/cleaning interfaces and scripts developed in <strong>Python</strong> via REST API connected to business repositories."
-      },
-      "p2": {
-        "comment": "// Project 02 — Cybersecurity & Zero Trust",
-        "title": "JTEKT Internship<br>Teleport Zero Trust Bastion<br>& System Hardening",
-        "m1": "🛡️ 99.8% Uptime",
-        "m2": "📹 100% Auditability & Traceability",
-        "m3": "🐧 15 Hardened Debian 12 Servers",
-        "desc": "<strong>Challenge:</strong> Replace direct and heterogeneous SSH accesses with a unified, auditable access model that complies with industrial cybersecurity requirements.",
-        "contrib_title": "Technical Solution & Operational Impact:",
-        "c1": "<strong>Zero Trust Access Plane:</strong> Deployment and configuration of the <strong>Teleport</strong> access bastion based on ephemeral certificates (mTLS/SSH).",
-        "c2": "<strong>Governance & Auditing:</strong> Elimination of shared static SSH keys, granular Role-Based Access Control (<strong>RBAC</strong>), and continuous video recording of administration sessions.",
-        "c3": "<strong>Hardening:</strong> Hardening of <strong>15 Linux Debian 12 servers</strong> in production (service isolation via chroot, fine-grained privilege management via POSIX ACLs, and closing of attack vectors)."
-      },
-      "p3": {
-        "comment": "// Project 03 — Network & Access Security",
-        "title": "JTEKT Internship<br>Network Access Control<br>802.1X NAC & Automation",
-        "m1": "🔌 24 Cisco 2960-X Switches",
-        "m2": "⚙️ 12 Operations Scripts",
-        "m3": "🌐 Dynamic Segmentation",
-        "desc": "<strong>Challenge:</strong> Securing the physical access layer against intrusion and MAC spoofing, with dynamic segmentation and automation of industrial flows.",
-        "contrib_title": "Technical Solution & Operational Impact:",
-        "c1": "<strong>802.1X NAC Deployment:</strong> Strong authentication via machine certificate (EAP-TLS) and centralized MAB on NPS server (RADIUS) with AD CS infrastructure.",
-        "c2": "<strong>Cisco Switching:</strong> Dynamic flow segmentation on <strong>24 Cisco 2960-X switches</strong> (strict isolation between office, industrial, and IoT flows).",
-        "c3": "<strong>Operations Automation:</strong> Design of a suite of <strong>12 Python and Bash scripts</strong> to automate infrastructure operations tasks, service interconnection, and IT hygiene audits."
-      },
-      "p4": {
-        "comment": "// Project 04 — Systems & Secure Storage",
-        "title": "JTEKT Internship<br>Secure SFTP Infrastructure<br>& Migration Automation",
-        "m1": "💾 1 TB Dedicated Volume",
-        "m2": "🔒 SFTP Chroot Isolation",
-        "m3": "🚀 100% Automated Migration",
-        "desc": "<strong>Context:</strong> Complete automation of the migration from a legacy FileZilla server to a secure Debian 12 environment. Development of an XML parsing script in Python and automated deployment scripts in Bash.",
-        "contrib_title": "Technical Details:",
-        "c1": "<strong>Systems & Automation:</strong> Full migration from FileZilla to secure Debian 12 via Python (XML parsing) and Bash (deployment) scripts.",
-        "c2": "<strong>Storage & Security:</strong> 1 TB dedicated volume, isolation via SFTP chroots, and fine-grained privilege management using system POSIX ACLs.",
-        "c3": "<strong>Persistence:</strong> Automated bind mounts via custom systemd (.mount) units."
-      },
-      "p5": {
-        "comment": "// Project 05",
-        "title": "SAÉ 3.04<br>Discovering and setting up<br>an IoT network",
-        "desc": "Two players play Minecraft over a network to find a hidden diamond, each using a connected glove. This glove enables super powers and traps via buttons placed on the fingers.",
-        "contrib_title": "My contribution:",
-        "c1": "Design and implementation of the IoT network architecture.",
-        "c2": "Development of Python scripts for MQTT communication.",
-        "c3": "Raspberry Pi configuration and security."
-      },
-      "p6": {
-        "comment": "// Project 06",
-        "title": "SAÉ 5.02<br>Managing an IT<br>project",
-        "desc": "The project involves securing a hospital's IT system as effectively as possible. Hospitals are often targets of cyber attacks that aim to ransom the establishment by locking its IT system and deleting medical and administrative data.",
-        "contrib_title": "My contribution:",
-        "c1": "Risk analysis related to cyber attacks.",
-        "c2": "Proposal and implementation of security solutions.",
-        "c3": "Project management using steering tools."
-      },
-      "p7": {
-        "comment": "// Project 07",
-        "title": "SAÉ 4.IOM.01<br>Implementing networks",
-        "desc": "In a datacenter, risks are multiple. This is why we will multiply security and redundancy measures: electrical, thermal, network, fire, etc.",
-        "contrib_title": "My contribution:",
-        "c1": "Configuration of MQTT communication protocols.",
-        "c2": "Automation of metrics with Grafana and InfluxDB.",
-        "c3": "Testing of network and electrical redundancies."
-      },
-      "p8": {
-        "comment": "// Project 08",
-        "title": "JTEKT Internship<br>Network infrastructure<br>modernization",
-        "desc": "Participation in the redesign of server rooms at JTEKT Column Systems France. Discovery of VMware virtualization, high availability, and industrial network monitoring tools.",
-        "contrib_title": "My contribution:",
-        "c1": "Redesign of server rooms (Buildings 21 & 35).",
-        "c2": "VMware ESXi 8 virtualization, SAN arrays, Veeam backups.",
-        "c3": "Network monitoring, structured IP planning.",
-        "c4": "Preparation for industrial IoT and high availability."
-      }
-    }
-  },
-  "certs": {
-    "title": "// CERTIFICATIONS & DIPLOMAS",
-    "view_details": "view_details →",
-    "c1": {
-      "type": "CCNAv7",
-      "date": "09/04/2024",
-      "title": "Enterprise Networking, Security, and Automation",
-      "s1": "OSPFv2 Configuration",
-      "s2": "Network Security and ACLs",
-      "s3": "NAT Services",
-      "s4": "QoS and Automation"
-    },
-    "c2": {
-      "type": "CCNAv7",
-      "date": "13/02/2024",
-      "title": "Switching, Routing, and Wireless Essentials",
-      "s1": "VLANs & Inter-VLAN Routing",
-      "s2": "STP & EtherChannel",
-      "s3": "IPv6 Configuration",
-      "s4": "WLAN Security"
-    },
-    "c3": {
-      "type": "CCNAv7",
-      "date": "08/09/2023",
-      "title": "Introduction to Networks",
-      "s1": "Basic Network Configuration",
-      "s2": "TCP/IP Protocols",
-      "s3": "IPv4 & IPv6 Addressing",
-      "s4": "Network Security"
-    },
-    "c4": {
-      "type": "Networking",
-      "date": "22/12/2022",
-      "title": "Networking Essentials",
-      "s1": "Basic Network Configuration",
-      "s2": "IP Fundamentals",
-      "s3": "Router Configuration",
-      "s4": "Network Security Basics"
-    },
-    "c5": {
-      "type": "Diploma",
-      "date": "30/06/2024",
-      "title": "DUT R&amp;T (Networks & Telecoms)",
-      "s1": "Networks &amp; Telecommunications",
-      "s2": "Web Development",
-      "s3": "Object-Oriented Programming",
-      "s4": "Databases",
-      "s5": "Systems &amp; Security"
-    },
-    "c6": {
-      "type": "Cisco",
-      "date": "2024",
-      "title": "Cybersecurity Essentials",
-      "s1": "Cybersecurity Fundamentals",
-      "s2": "Protection Against Cyber Attacks",
-      "s3": "Enterprise and Data Defense",
-      "s4": "Professional Security Skills"
-    }
-  }
+	"nav": {
+		"home": "_home",
+		"portfolio": "_portfolio",
+		"certifications": "_certifications",
+		"resume": "_resume",
+		"contact": "_contact"
+	},
+	"home": {
+		"welcome": "// Welcome to my portfolio",
+		"hello": "// Hello, I am Chadi Abouhnaik  ...",
+		"subtitle": "Systems, Network & AI Engineering Intern (Master ROC / CNAM) // Specialized in Zero Trust Architectures, RAG Engines & Industrial Infrastructure.",
+		"passion": "// Passionate about networking and IT as a whole",
+		"scroll": "scroll",
+		"typing1": "Network & Security Engineering Apprentice (Master ROC)",
+		"typing2": "Specialized in Infrastructure Industrialization (IaC)",
+		"typing3": "Specialized in Zero Trust Architectures",
+		"typing_default": "home.typing_default"
+	},
+	"resume": {
+		"title": "// RESUME & SKILLS BOOKLET",
+		"view_cv": "📄 View Resume",
+		"view_livret": "📋 View Skills Booklet",
+		"no_pdf": "Cannot display the PDF?",
+		"download": "Click here to download it"
+	},
+	"contact": {
+		"title": "// Contact Me",
+		"subtitle": "Feel free to reach out for any opportunity",
+		"name": "Name",
+		"email": "Email",
+		"message": "Message",
+		"send": "Send Message",
+		"sending": "Sending...",
+		"success": "Message sent successfully!",
+		"error": "An error occurred while sending.",
+		"name_placeholder": "contact.name_placeholder",
+		"message_placeholder": "contact.message_placeholder",
+		"location": "contact.location"
+	},
+	"portfolio": {
+		"view_project": "View Project",
+		"prev": "← prev",
+		"next": "next →",
+		"projects": {
+			"p1": {
+				"comment": "// Project 01 — GenAI & Sovereign RAG",
+				"title": "JTEKT Internship<br>Sovereign RAG Engine<br>& Industrial Generative AI",
+				"m1": "📊 450+ Docs Vectorized",
+				"m2": "⚡ -40% Search Time",
+				"m3": "🔒 100% Sovereign On-Premise",
+				"desc": "<strong>Challenge:</strong> Instantly access over 450 complex technical documentations and engineering reports, with an absolute constraint of sovereignty and industrial confidentiality (zero data leaks, formal ban on using public Cloud APIs).",
+				"contrib_title": "Technical Solution & Operational Impact:",
+				"c1": "<strong>Local LLMs & Sovereignty:</strong> On-premise deployment of open-source models via <strong>Ollama</strong> (Llama 3, Mistral) for local processing without external dependencies.",
+				"c2": "<strong>Dense Vector Indexing:</strong> Semantic vectorization with <strong>FAISS</strong> for instant semantic searches on technical corpuses.",
+				"c3": "<strong>Hybrid Pipeline & RRF:</strong> Combination of lexical and dense search with <strong>Reciprocal Rank Fusion (RRF)</strong> reranking for maximum documentary precision.",
+				"c4": "<strong>Ingestion & APIs:</strong> Data ingestion/cleaning interfaces and scripts developed in <strong>Python</strong> via REST API connected to business repositories."
+			},
+			"p2": {
+				"comment": "// Project 02 — Cybersecurity & Zero Trust",
+				"title": "JTEKT Internship<br>Teleport Zero Trust Bastion<br>& System Hardening",
+				"m1": "🛡️ 99.8% Uptime",
+				"m2": "📹 100% Auditability & Traceability",
+				"m3": "🐧 15 Hardened Debian 12 Servers",
+				"desc": "<strong>Challenge:</strong> Replace direct and heterogeneous SSH accesses with a unified, auditable access model that complies with industrial cybersecurity requirements.",
+				"contrib_title": "Technical Solution & Operational Impact:",
+				"c1": "<strong>Zero Trust Access Plane:</strong> Deployment and configuration of the <strong>Teleport</strong> access bastion based on ephemeral certificates (mTLS/SSH).",
+				"c2": "<strong>Governance & Auditing:</strong> Elimination of shared static SSH keys, granular Role-Based Access Control (<strong>RBAC</strong>), and continuous video recording of administration sessions.",
+				"c3": "<strong>Hardening:</strong> Hardening of <strong>15 Linux Debian 12 servers</strong> in production (service isolation via chroot, fine-grained privilege management via POSIX ACLs, and closing of attack vectors)."
+			},
+			"p3": {
+				"comment": "// Project 03 — Network & Access Security",
+				"title": "JTEKT Internship<br>Network Access Control<br>802.1X NAC & Automation",
+				"m1": "🔌 24 Cisco 2960-X Switches",
+				"m2": "⚙️ 12 Operations Scripts",
+				"m3": "🌐 Dynamic Segmentation",
+				"desc": "<strong>Challenge:</strong> Securing the physical access layer against intrusion and MAC spoofing, with dynamic segmentation and automation of industrial flows.",
+				"contrib_title": "Technical Solution & Operational Impact:",
+				"c1": "<strong>802.1X NAC Deployment:</strong> Strong authentication via machine certificate (EAP-TLS) and centralized MAB on NPS server (RADIUS) with AD CS infrastructure.",
+				"c2": "<strong>Cisco Switching:</strong> Dynamic flow segmentation on <strong>24 Cisco 2960-X switches</strong> (strict isolation between office, industrial, and IoT flows).",
+				"c3": "<strong>Operations Automation:</strong> Design of a suite of <strong>12 Python and Bash scripts</strong> to automate infrastructure operations tasks, service interconnection, and IT hygiene audits."
+			},
+			"p4": {
+				"comment": "// Project 04 — Systems & Secure Storage",
+				"title": "JTEKT Internship<br>Secure SFTP Infrastructure<br>& Migration Automation",
+				"m1": "💾 1 TB Dedicated Volume",
+				"m2": "🔒 SFTP Chroot Isolation",
+				"m3": "🚀 100% Automated Migration",
+				"desc": "<strong>Context:</strong> Complete automation of the migration from a legacy FileZilla server to a secure Debian 12 environment. Development of an XML parsing script in Python and automated deployment scripts in Bash.",
+				"contrib_title": "Technical Details:",
+				"c1": "<strong>Systems & Automation:</strong> Full migration from FileZilla to secure Debian 12 via Python (XML parsing) and Bash (deployment) scripts.",
+				"c2": "<strong>Storage & Security:</strong> 1 TB dedicated volume, isolation via SFTP chroots, and fine-grained privilege management using system POSIX ACLs.",
+				"c3": "<strong>Persistence:</strong> Automated bind mounts via custom systemd (.mount) units."
+			},
+			"p5": {
+				"comment": "// Project 05",
+				"title": "SAÉ 3.04<br>Discovering and setting up<br>an IoT network",
+				"desc": "Two players play Minecraft over a network to find a hidden diamond, each using a connected glove. This glove enables super powers and traps via buttons placed on the fingers.",
+				"contrib_title": "My contribution:",
+				"c1": "Design and implementation of the IoT network architecture.",
+				"c2": "Development of Python scripts for MQTT communication.",
+				"c3": "Raspberry Pi configuration and security."
+			},
+			"p6": {
+				"comment": "// Project 06",
+				"title": "SAÉ 5.02<br>Managing an IT<br>project",
+				"desc": "The project involves securing a hospital's IT system as effectively as possible. Hospitals are often targets of cyber attacks that aim to ransom the establishment by locking its IT system and deleting medical and administrative data.",
+				"contrib_title": "My contribution:",
+				"c1": "Risk analysis related to cyber attacks.",
+				"c2": "Proposal and implementation of security solutions.",
+				"c3": "Project management using steering tools."
+			},
+			"p7": {
+				"comment": "// Project 07",
+				"title": "SAÉ 4.IOM.01<br>Implementing networks",
+				"desc": "In a datacenter, risks are multiple. This is why we will multiply security and redundancy measures: electrical, thermal, network, fire, etc.",
+				"contrib_title": "My contribution:",
+				"c1": "Configuration of MQTT communication protocols.",
+				"c2": "Automation of metrics with Grafana and InfluxDB.",
+				"c3": "Testing of network and electrical redundancies."
+			},
+			"p8": {
+				"comment": "// Project 08",
+				"title": "JTEKT Internship<br>Network infrastructure<br>modernization",
+				"desc": "Participation in the redesign of server rooms at JTEKT Column Systems France. Discovery of VMware virtualization, high availability, and industrial network monitoring tools.",
+				"contrib_title": "My contribution:",
+				"c1": "Redesign of server rooms (Buildings 21 & 35).",
+				"c2": "VMware ESXi 8 virtualization, SAN arrays, Veeam backups.",
+				"c3": "Network monitoring, structured IP planning.",
+				"c4": "Preparation for industrial IoT and high availability."
+			}
+		}
+	},
+	"certs": {
+		"title": "// CERTIFICATIONS & DIPLOMAS",
+		"view_details": "view_details →",
+		"c1": {
+			"type": "CCNAv7",
+			"date": "09/04/2024",
+			"title": "Enterprise Networking, Security, and Automation",
+			"s1": "OSPFv2 Configuration",
+			"s2": "Network Security and ACLs",
+			"s3": "NAT Services",
+			"s4": "QoS and Automation"
+		},
+		"c2": {
+			"type": "CCNAv7",
+			"date": "13/02/2024",
+			"title": "Switching, Routing, and Wireless Essentials",
+			"s1": "VLANs & Inter-VLAN Routing",
+			"s2": "STP & EtherChannel",
+			"s3": "IPv6 Configuration",
+			"s4": "WLAN Security"
+		},
+		"c3": {
+			"type": "CCNAv7",
+			"date": "08/09/2023",
+			"title": "Introduction to Networks",
+			"s1": "Basic Network Configuration",
+			"s2": "TCP/IP Protocols",
+			"s3": "IPv4 & IPv6 Addressing",
+			"s4": "Network Security"
+		},
+		"c4": {
+			"type": "Networking",
+			"date": "22/12/2022",
+			"title": "Networking Essentials",
+			"s1": "Basic Network Configuration",
+			"s2": "IP Fundamentals",
+			"s3": "Router Configuration",
+			"s4": "Network Security Basics"
+		},
+		"c5": {
+			"type": "Diploma",
+			"date": "30/06/2024",
+			"title": "DUT R&amp;T (Networks & Telecoms)",
+			"s1": "Networks &amp; Telecommunications",
+			"s2": "Web Development",
+			"s3": "Object-Oriented Programming",
+			"s4": "Databases",
+			"s5": "Systems &amp; Security"
+		},
+		"c6": {
+			"type": "Cisco",
+			"date": "2024",
+			"title": "Cybersecurity Essentials",
+			"s1": "Cybersecurity Fundamentals",
+			"s2": "Protection Against Cyber Attacks",
+			"s3": "Enterprise and Data Defense",
+			"s4": "Professional Security Skills"
+		}
+	}
 }
